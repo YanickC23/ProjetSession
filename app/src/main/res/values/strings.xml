@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">ProjetSession</string>
+    <string name="TitreMettreVoitureLocation">Mettre ma voiture en location</string>
+    <string name="MarqueVoiture">Marque</string>
+    <string name="ModeleVoiture">Modèle</string>
+    <string name="AnneeVoiture">Année</string>
+    <string name="PrixVoiture">Valeur</string>
+    <string name="DescriptionVoiture">Description</string>
+    <string name="TarifVoiture">Tarif Quotidien</string>
+    <string name="hintMarqueVoiture">ex: Toyota</string>
+    <string name="hintModeleVoiture">ex: Matrix</string>
+    <string name="hintAnneeVoiture">ex: 2012</string>
+    <string name="hintPrixVoiture">ex: 12 000$</string>
+    <string name="hintDescriptionVoiture">Description</string>
+    <string name="hintTarifVoiture">Votre tarif, ex: 86.00$/Jour</string>
+
+    <string name="btnEnregistrer">Enregistrer</string>
+
 </resources>
