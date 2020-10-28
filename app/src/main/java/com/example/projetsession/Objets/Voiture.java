@@ -1,9 +1,20 @@
 package com.example.projetsession.Objets;
 
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Objects;
 
+@Entity(tableName = "Table_voiture")
 public class Voiture {
+
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "ID")
+    int id;
 
     String marque;
     String modele;
