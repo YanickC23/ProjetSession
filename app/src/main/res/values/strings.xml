@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ProjetSession</string>
+    <string name="app_comp_name">Location express</string>
+
     <string name="TitreMettreVoitureLocation">Mettre ma voiture en location</string>
     <string name="MarqueVoiture">Marque</string>
     <string name="ModeleVoiture">Modèle</string>
