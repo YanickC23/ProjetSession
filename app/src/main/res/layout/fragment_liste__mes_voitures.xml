@@ -11,7 +11,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvListeMesAutos"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="165dp"
+        app:cardCornerRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,23 +32,74 @@
                 android:layout_weight="2"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvMarque"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:background="@color/couleurBouton"
+                        android:text="Toyota"
+                        android:textColor="@color/couleurTexteBouton"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvModele"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:background="@color/couleurBouton"
+                        android:text="Matrix"
+                        android:textColor="@color/couleurTexteBouton"
+                        android:textSize="30sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tvAnne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="2006"
+                    android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tvCategorie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Crossover"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvValeur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12 000$"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvTarif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="80$/j"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvStatut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Disponible"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

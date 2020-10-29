@@ -4,9 +4,9 @@ package com.example.projetsession.Voitures;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetsession.Objets.Voiture;
@@ -36,6 +36,14 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
     @Override
     public void onBindViewHolder(@NonNull MonViewHolder holder, int position){
 
+        holder.tvMarque.setText(listeVoitures.get(position).getMarque());
+        holder.tvModele.setText(listeVoitures.get(position).getModele());
+        holder.tvAnnee.setText(listeVoitures.get(position).getAnnee());
+        holder.tvCategorie.setText(listeVoitures.get(position).getCategorie());
+        holder.tvTarif.setText(listeVoitures.get(position).getTarifJourn().toString());
+        holder.tvValeur.setText(listeVoitures.get(position).getPrix().toString());
+        holder.tvStatutDispo.setText(listeVoitures.get(position).getStatutLocation());
+
     }
 
 
@@ -51,10 +59,20 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
 
     public class MonViewHolder extends RecyclerView.ViewHolder{
 
+        TextView tvMarque, tvModele, tvAnnee, tvCategorie,
+                tvTarif, tvValeur, tvStatutDispo;
 
 
         public MonViewHolder(View view){
             super(view);
+
+            tvMarque = view.findViewById(R.id.tvMarque);
+            tvModele = view.findViewById(R.id.tvModele);
+            tvAnnee = view.findViewById(R.id.tvAnne);
+            tvCategorie = view.findViewById(R.id.tvCategorie);
+            tvTarif = view.findViewById(R.id.tvTarif);
+            tvValeur = view.findViewById(R.id.tvValeur);
+            tvStatutDispo = view.findViewById(R.id.tvStatut);
 
         }
     }
