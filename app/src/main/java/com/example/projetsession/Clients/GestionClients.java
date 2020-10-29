@@ -1,8 +1,10 @@
-package com.example.projetsession;
+package com.example.projetsession.Clients;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.projetsession.R;
 
 public class GestionClients extends AppCompatActivity {
 
