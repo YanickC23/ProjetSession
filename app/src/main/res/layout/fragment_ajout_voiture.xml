@@ -17,9 +17,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="40dp"
             android:text="@string/TitreMettreVoitureLocation"
             android:textAlignment="center"
             android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,14 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="30dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnEnrVoiture"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,6 +160,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="start|top"
+                    android:hint="@string/hintDescriptionVoiture"
                     android:inputType="textMultiLine"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -175,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Catégorie"
+                    android:text="@string/CategorieVoiture"
                     android:textSize="18sp" />
 
                 <EditText
@@ -184,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="@string/hintCategorieVoiture"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -207,6 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="@string/hintTarifVoiture"
                     android:inputType="numberDecimal"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -217,7 +220,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="80dp"
             android:layout_marginBottom="36dp"
             android:background="@drawable/bouton_enr"
@@ -226,7 +228,6 @@
             android:textColor="@color/couleurTexteBouton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

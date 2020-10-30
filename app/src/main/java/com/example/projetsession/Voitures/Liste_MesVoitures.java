@@ -47,16 +47,16 @@ public class Liste_MesVoitures extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_liste__mes_voitures, container, false);
+        View view = inflater.inflate(R.layout.activity_gestion_voitures, container, false);
 
         recyclerView = view.findViewById(R.id.rvMesVoitures);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new Adapter_Voitures(interfaceListeMesVoiture.CreerListeMesVoitures());
         recyclerView.setAdapter(adapter);
 
-        return inflater.inflate(R.layout.fragment_liste__mes_voitures, container, false);
+        return view;
     }
 
 
@@ -66,15 +66,11 @@ public class Liste_MesVoitures extends Fragment {
         interfaceListeMesVoiture = (InterfaceListe_MesVoiture)context;
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
 
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-
+        super.onViewCreated(view, savedInstanceState);
 
 
     }

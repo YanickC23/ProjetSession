@@ -7,13 +7,17 @@
     <string name="PrixVoiture">Valeur</string>
     <string name="DescriptionVoiture">Description</string>
     <string name="TarifVoiture">Tarif Quotidien</string>
+    <string name="CategorieVoiture">Catégorie</string>
     <string name="hintMarqueVoiture">ex: Toyota</string>
     <string name="hintModeleVoiture">ex: Matrix</string>
     <string name="hintAnneeVoiture">ex: 2012</string>
     <string name="hintPrixVoiture">ex: 12 000$</string>
-    <string name="hintDescriptionVoiture">Description</string>
+    <string name="hintDescriptionVoiture">Une brève description de la voiture</string>
     <string name="hintTarifVoiture">Votre tarif, ex: 86.00$/Jour</string>
-
+    <string name="hintCategorieVoiture">La catégorie de la voiture</string>
     <string name="btnEnregistrer">Enregistrer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

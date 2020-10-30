@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.InterfaceAjoutVoiture,
-                                                                    Liste_MesVoitures.InterfaceListe_MesVoiture{
+                                                                    Liste_MesVoitures.InterfaceListe_MesVoiture,
+                                                                        ModifierVoiture.InterfaceModifierVoiture{
 
 
 
@@ -102,5 +103,22 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
         listeVoiture.add(voiture);
     }
 
+
+    public void ModifierVoitureListe(int index ,String _Marque, String _Modele, Integer _Annee,
+                                    Double _Prix, boolean _StatutDispo, String _Description,
+                                        Double _TarifJournalier, String _Categorie){
+
+        listeVoiture.get(index).setMarque(_Marque);
+        listeVoiture.get(index).setModele(_Modele);
+        listeVoiture.get(index).setAnnee(_Annee);
+        listeVoiture.get(index).setPrix(_Prix);
+        listeVoiture.get(index).setStatutDisponible(_StatutDispo);
+        listeVoiture.get(index).setDescription(_Description);
+        listeVoiture.get(index).setTarifJourn(_TarifJournalier);
+        listeVoiture.get(index).setCategorie(_Categorie);
+
+
+
+    }
 
 }
