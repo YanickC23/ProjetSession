@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Voitures.AjoutVoiture">
+    tools:context=".Clients.CreationCompte" >
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
-        android:text="@string/TitreMettreVoitureLocation"
+        android:text="@string/TitreInscription"
         android:textAlignment="center"
         android:textSize="28sp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -31,190 +29,153 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/MarqueVoiture"
+                android:text="@string/NomClient"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxMarque"
+                android:id="@+id/edxNom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/hintMarqueVoiture"
                 android:inputType="textPersonName"
-                android:textSize="18sp" />
+                android:text="@string/hintNomClient" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/ModeleVoiture"
+                android:text="@string/PrenomClient"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxModele"
+                android:id="@+id/edxPrenom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/hintModeleVoiture"
                 android:inputType="textPersonName"
-                android:textSize="18sp" />
+                android:text="@string/hintPrenomClient" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/AnneeVoiture"
+                android:text="@string/NotelClient"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxAnnee"
+                android:id="@+id/edxNotel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/hintAnneeVoiture"
-                android:inputType="number"
-                android:textSize="18sp" />
-
+                android:inputType="textPersonName"
+                android:text="@string/hintNotelClient" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/PrixVoiture"
+                android:text="@string/EmailClient"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxValeur"
+                android:id="@+id/edxEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/hintPrixVoiture"
-                android:inputType="numberDecimal"
-                android:textSize="18sp" />
+                android:inputType="textPersonName"
+                android:text="@string/hintEmailClient" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/DescriptionVoiture"
+                android:text="@string/mdp_1_Client"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxDescription"
+                android:id="@+id/edxMotdepasse_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/hintDescriptionVoiture"
-                android:inputType="textMultiLine"
-                android:textSize="18sp" />
+                android:inputType="textPersonName"
+                android:text="@string/hintmdp_1_Client" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
+            android:layout_weight="4">
 
             <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/CategorieVoiture"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/edxCategorie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/hintCategorieVoiture"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/TarifVoiture"
+                android:text="@string/mdp_2_Client"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/edxTarif"
+                android:id="@+id/edxMotdepasse_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/hintTarifVoiture"
-                android:inputType="numberDecimal"
-                android:textSize="18sp" />
+                android:inputType="textPersonName"
+                android:text="@string/hintmdp_2_Client" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEnrClient"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/bouton_enr"
+            android:text="@string/btnEnregistrer"
+            android:textAlignment="center"
+            android:textColor="@color/couleurTexteBouton" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnEnrVoiture"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/bouton_enr"
-        android:text="@string/btnEnregistrer"
-        android:textAlignment="center"
-        android:textColor="@color/couleurTexteBouton" />
 
 </LinearLayout>

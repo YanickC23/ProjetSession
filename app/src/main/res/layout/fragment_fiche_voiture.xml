@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    tools:context=".Voitures.FicheVoiture">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="250dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="40dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/couleurBouton"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtFich_Marque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:paddingLeft="10dp"
+            android:text="Toyota"
+            android:textColor="@color/couleurTexteBouton"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txtFich_Modele"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="4"
+            android:text="Matrix"
+            android:textColor="@color/couleurTexteBouton"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtFich_Anne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="2006"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/txtFich_Categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Crossover"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtFich_Valeur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="12000$"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtFich_Tarif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="80$/jour"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtFich_Dispo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Disponible"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnModifVoiture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bouton_enr"
+        android:elevation="5dp"
+        android:text="Modifier "
+        android:textColor="@color/couleurTexteBouton"
+        android:textSize="22dp" />
+</LinearLayout>

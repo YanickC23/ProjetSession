@@ -21,19 +21,19 @@ public class Voiture {
     Integer annee;
     Double prix;
     String categorie;
-    boolean statut;
+    boolean statutDisponible;
     String description;
     Double tarifJourn;
 
 
     public Voiture(String _Marque, String _Modele, Integer _Annee,
-                   Double _Prix, boolean _Statut, String _Description,
+                   Double _Prix, boolean _StatutDispo, String _Description,
                         Double _TarifJournalier, String _Categorie) {
         this.marque = _Marque;
         this.modele = _Modele;
         this.annee = _Annee;
         this.prix = _Prix;
-        this.statut = _Statut;
+        this.statutDisponible = _StatutDispo;
         this.description = _Description;
         this.tarifJourn = _TarifJournalier;
         this.categorie = _Categorie;
@@ -84,12 +84,23 @@ public class Voiture {
         this.prix = prix;
     }
 
-    public boolean isStatut() {
-        return statut;
+    public boolean isStatutDisponible() {
+        return statutDisponible;
     }
 
-    public void setStatut(boolean statut) {
-        this.statut = statut;
+    public String getStatutLocation(){
+
+        if (isStatutDisponible()== true){
+            return "Disponible";
+        }
+        else{
+            return "Louée";
+        }
+    }
+
+
+    public void setStatutDisponible(boolean statutDisponible) {
+        this.statutDisponible = statutDisponible;
     }
 
     public String getDescription() {
@@ -114,7 +125,7 @@ public class Voiture {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Voiture voiture = (Voiture) o;
-        return statut == voiture.statut &&
+        return statutDisponible == voiture.statutDisponible &&
                 Objects.equals(marque, voiture.marque) &&
                 Objects.equals(modele, voiture.modele) &&
                 Objects.equals(annee, voiture.annee) &&
@@ -126,7 +137,7 @@ public class Voiture {
 
     @Override
     public int hashCode() {
-        return Objects.hash(marque, modele, annee, prix, statut, description, tarifJourn, categorie);
+        return Objects.hash(marque, modele, annee, prix, statutDisponible, description, tarifJourn, categorie);
     }
 
     @Override
@@ -136,7 +147,7 @@ public class Voiture {
                 ", modele='" + modele + '\'' +
                 ", annee=" + annee +
                 ", prix=" + prix +
-                ", statut=" + statut +
+                ", statutDisponible=" + statutDisponible +
                 ", categorie='" + categorie + '\'' +
                 ", description='" + description + '\'' +
                 ", TarifJournalier='" + tarifJourn  +

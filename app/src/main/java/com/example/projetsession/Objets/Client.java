@@ -21,7 +21,7 @@ public class Client {
     String NoTel;
     String email;
     String motDePasse;
-
+    //TODO ===> Ajout d'info NoPermisConduire, carte de crédit.
 
    public Client(){
     }
