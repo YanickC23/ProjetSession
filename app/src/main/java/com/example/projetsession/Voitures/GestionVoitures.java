@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
         fragmentTransaction.commit();
 
 
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
     }
 
@@ -95,12 +97,13 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
 
 
     public List<Voiture> CreerListeMesVoitures(){
-        return listeVoiture;
+
+        return Singleton.getInstance().getListeVoitures();
     }
 
 
     public void AjouterVoitureListe(Voiture voiture){
-        listeVoiture.add(voiture);
+        Singleton.getInstance().AjoutVoiture_ListeVoitures(voiture);
     }
 
 
@@ -108,17 +111,9 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
                                     Double _Prix, boolean _StatutDispo, String _Description,
                                         Double _TarifJournalier, String _Categorie){
 
-        listeVoiture.get(index).setMarque(_Marque);
-        listeVoiture.get(index).setModele(_Modele);
-        listeVoiture.get(index).setAnnee(_Annee);
-        listeVoiture.get(index).setPrix(_Prix);
-        listeVoiture.get(index).setStatutDisponible(_StatutDispo);
-        listeVoiture.get(index).setDescription(_Description);
-        listeVoiture.get(index).setTarifJourn(_TarifJournalier);
-        listeVoiture.get(index).setCategorie(_Categorie);
-
-
-
+        Singleton.getInstance().Modifier_ListeVoitures( index , _Marque, _Modele,
+                                                        _Annee, _Prix, _StatutDispo,
+                                                            _Description, _TarifJournalier, _Categorie);
     }
 
 }

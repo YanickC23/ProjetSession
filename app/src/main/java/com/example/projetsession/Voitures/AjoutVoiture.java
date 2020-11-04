@@ -100,6 +100,13 @@ public class AjoutVoiture extends Fragment {
                 interfaceAjoutVoiture.AjouterVoitureListe(CreationVoiture(marque, modele, annee, valeur, statutDispo, description, tarif, categorie));
 
 
+                edxMarque.setText("");
+                edxModele.setText("");
+                edxAnnee.setText("");
+                edxDescription.setText("");
+                edxTarif.setText("");
+                edxValeur.setText("");
+                edxCategorie.setText("");
 
             }
         });

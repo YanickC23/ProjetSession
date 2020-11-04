@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +29,26 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
+
+    private Interface_AdapterVoiture interface_adapterVoiture;
+
     public Adapter_Voitures(List<Voiture>list){
 
         this.listeVoitures = list;
     }
+
+
+
+
+    public interface Interface_AdapterVoiture{
+        int positVoiture_a_FicheVoiture(int position);
+    }
+
+    public void lstVoit_Listener(Interface_AdapterVoiture interface_adapterVoiture){
+        this.interface_adapterVoiture = interface_adapterVoiture;
+    }
+
+
 
 
     @NonNull
@@ -89,9 +107,18 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
                 @Override
                 public void onClick(View view) {
 
+                    Integer position;
+                    position = getAdapterPosition();
+
+                    interface_adapterVoiture.positVoiture_a_FicheVoiture(position);
+                    fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragFicheVoiture);
                     fragmentTransaction.commit();
+
+
+
+
                 }
             });
 
