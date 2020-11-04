@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.Objets.Voiture;
 
-@Database(entities = {Client.class, Voiture.class}, version = 1)
+@Database(entities = {Client.class, Voiture.class}, version = 1, exportSchema = false)
 public abstract class LocationDB extends RoomDatabase {
 
     public abstract ClientDAO cdao();
