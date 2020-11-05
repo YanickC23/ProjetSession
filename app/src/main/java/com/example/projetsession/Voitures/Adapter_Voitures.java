@@ -3,6 +3,8 @@ package com.example.projetsession.Voitures;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,8 @@ import com.example.projetsession.R;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonViewHolder> {
 
     FicheVoiture fragFicheVoiture;
@@ -30,24 +34,12 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
     FragmentTransaction fragmentTransaction;
 
 
-    private Interface_AdapterVoiture interface_adapterVoiture;
+
 
     public Adapter_Voitures(List<Voiture>list){
 
         this.listeVoitures = list;
     }
-
-
-
-
-    public interface Interface_AdapterVoiture{
-        int positVoiture_a_FicheVoiture(int position);
-    }
-
-    public void lstVoit_Listener(Interface_AdapterVoiture interface_adapterVoiture){
-        this.interface_adapterVoiture = interface_adapterVoiture;
-    }
-
 
 
 
@@ -107,10 +99,16 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
                 @Override
                 public void onClick(View view) {
 
-                    Integer position;
+
+                    int position;
                     position = getAdapterPosition();
 
-                    interface_adapterVoiture.positVoiture_a_FicheVoiture(position);
+
+                    SharedPreferences pref = view.getContext().getSharedPreferences("PositLstMVoit",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putInt("PositLstMVoit", position);
+                    editor.commit();
+
                     fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragFicheVoiture);

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +32,9 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
 
     List<Voiture> listeVoiture =  new ArrayList<Voiture>();
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.flFrag_GestVoiture, fragListeMesVoitures);
         fragmentTransaction.commit();
+
 
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -115,5 +120,8 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
                                                         _Annee, _Prix, _StatutDispo,
                                                             _Description, _TarifJournalier, _Categorie);
     }
+
+
+
 
 }

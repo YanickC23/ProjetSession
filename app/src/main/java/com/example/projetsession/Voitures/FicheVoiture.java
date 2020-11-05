@@ -1,6 +1,7 @@
 package com.example.projetsession.Voitures;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -19,20 +20,22 @@ import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projetsession.R;
 
 
-public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface_AdapterVoiture {
+public class FicheVoiture extends Fragment {
 
     ModifierVoiture fragModifierVoiture;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
-    private Adapter_Voitures adapter_voitures;
 
     TextView txtMarque, txtModele, txtAnnee, txtCategorie,
             txtDescription, txtTarif, txtValeur, txtDispo;
+
+
 
 
     Button btnModif;
@@ -41,9 +44,7 @@ public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface
         // Required empty public constructor
     }
 
-    public int positVoiture_a_FicheVoiture(int position){
-        return position;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,8 +76,10 @@ public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface
             btnModif = view.findViewById(R.id.btnModifVoiture);
             fragModifierVoiture = new ModifierVoiture();
 
+            SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstMVoit", Context.MODE_PRIVATE);
+            int positLstMVoit = pref.getInt("PositLstMVoit", 0);
 
-
+            Toast.makeText(view.getContext(), Integer.toString(positLstMVoit), Toast.LENGTH_LONG).show();
 
 
 

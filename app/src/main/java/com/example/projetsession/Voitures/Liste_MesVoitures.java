@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
@@ -29,6 +30,7 @@ public class Liste_MesVoitures extends Fragment {
     private List<Voiture> listeVoitures;
 
 
+
     public Liste_MesVoitures() {
         // Required empty public constructor
     }
@@ -36,6 +38,7 @@ public class Liste_MesVoitures extends Fragment {
     public interface InterfaceListe_MesVoiture{
             List<Voiture> CreerListeMesVoitures();
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,7 @@ public class Liste_MesVoitures extends Fragment {
     }
 
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -74,5 +78,8 @@ public class Liste_MesVoitures extends Fragment {
 
 
     }
+
+
+
 
 }
