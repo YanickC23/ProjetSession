@@ -2,7 +2,6 @@ package com.example.projetsession.Voitures;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,18 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 
 
 public class FicheVoiture extends Fragment {
@@ -32,7 +29,7 @@ public class FicheVoiture extends Fragment {
     FragmentTransaction fragmentTransaction;
 
 
-    TextView txtMarque, txtModele, txtAnnee, txtCategorie,
+    TextView txtMarqueModele, txtModele, txtAnnee, txtCategorie,
             txtDescription, txtTarif, txtValeur, txtDispo;
 
 
@@ -66,8 +63,7 @@ public class FicheVoiture extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
 
-            txtMarque = view.findViewById(R.id.txtFich_Marque);
-            txtModele = view.findViewById(R.id.txtFich_Modele);
+            txtMarqueModele = view.findViewById(R.id.txtFich_MarqueModele);
             txtAnnee = view.findViewById(R.id.txtFich_Anne);
             txtCategorie = view.findViewById(R.id.txtFich_Categorie);
             txtTarif = view.findViewById(R.id.txtFich_Tarif);
@@ -79,8 +75,12 @@ public class FicheVoiture extends Fragment {
             SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstMVoit", Context.MODE_PRIVATE);
             int positLstMVoit = pref.getInt("PositLstMVoit", 0);
 
-            Toast.makeText(view.getContext(), Integer.toString(positLstMVoit), Toast.LENGTH_LONG).show();
-
+            txtMarqueModele.setText(Singleton.getInstance().Obt_MarqueModele(positLstMVoit));
+            txtAnnee.setText(Integer.toString(Singleton.getInstance().Obt_AnneeVoiture(positLstMVoit)));
+            txtCategorie.setText(Singleton.getInstance().Obt_CategorieVoiture(positLstMVoit));
+            txtTarif.setText(Double.toString(Singleton.getInstance().Obt_TarifJournVoiture(positLstMVoit)));
+            txtValeur.setText(Double.toString(Singleton.getInstance().Obt_PrixVoiture(positLstMVoit)));
+            txtDispo.setText(Singleton.getInstance().Obt_Statut(positLstMVoit));
 
 
         btnModif.setOnClickListener(new View.OnClickListener() {

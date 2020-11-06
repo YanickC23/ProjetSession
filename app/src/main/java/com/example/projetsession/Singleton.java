@@ -107,12 +107,14 @@ public class Singleton {
     public String Obt_ModeleVoiture(int index){
         return listeVoitures.get(index).getMarque();
     }
+
     public int Obt_AnneeVoiture(int index){
         return listeVoitures.get(index).getAnnee();
     }
     public double Obt_PrixVoiture(int index){
         return listeVoitures.get(index).getPrix();
     }
+
     public String Obt_DescriptionVoiture(int index){
         return listeVoitures.get(index).getDescription();
     }
@@ -123,8 +125,13 @@ public class Singleton {
         return listeVoitures.get(index).getCategorie();
     }
 
+    public String Obt_MarqueModele(int index){
+        return listeVoitures.get(index).getMarqueModele();
+    }
 
-
+    public String Obt_Statut(int index){
+        return listeVoitures.get(index).getStatutLocation();
+    }
 
 
 }

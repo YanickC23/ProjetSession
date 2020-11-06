@@ -1,6 +1,7 @@
 package com.example.projetsession.Voitures;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 
 
 public class ModifierVoiture extends Fragment {
@@ -30,7 +32,7 @@ public class ModifierVoiture extends Fragment {
     Integer annee, position;
     Double valeur, tarif;
     Boolean statutDispo;
-
+    int positLstMVoit;
     Button btnEnr;
 
     public ModifierVoiture() {
@@ -71,6 +73,27 @@ public class ModifierVoiture extends Fragment {
         edxCategorie = view.findViewById(R.id.edxCategorie);
         btnEnr = view.findViewById(R.id.btnEnrVoiture);
 
+
+
+        SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstMVoit", Context.MODE_PRIVATE);
+        positLstMVoit = pref.getInt("PositLstMVoit", 0);
+
+        edxMarque.setText(Singleton.getInstance().Obt_MarqueVoiture(positLstMVoit));
+        edxModele.setText(Singleton.getInstance().Obt_ModeleVoiture(positLstMVoit));
+        edxAnnee.setText(Integer.toString(Singleton.getInstance().Obt_AnneeVoiture(positLstMVoit)));
+        edxDescription.setText(Singleton.getInstance().Obt_DescriptionVoiture(positLstMVoit));
+        edxTarif.setText(Double.toString(Singleton.getInstance().Obt_TarifJournVoiture(positLstMVoit)));
+        edxValeur.setText(Double.toString(Singleton.getInstance().Obt_PrixVoiture(positLstMVoit)));
+        edxCategorie.setText(Singleton.getInstance().Obt_CategorieVoiture(positLstMVoit));
+
+
+
+
+
+
+
+
+
         btnEnr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +108,7 @@ public class ModifierVoiture extends Fragment {
                 valeur = Double.parseDouble(edxValeur.getText().toString());
                 statutDispo = true;
 
-                interfaceModifierVoiture.ModifierVoitureListe(position, marque, modele, annee, valeur, statutDispo, description, tarif, categorie);
+                interfaceModifierVoiture.ModifierVoitureListe(positLstMVoit, marque, modele, annee, valeur, statutDispo, description, tarif, categorie);
 
 
 
