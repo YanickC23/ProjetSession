@@ -6,6 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 @Entity(tableName = "Table_client")
@@ -14,12 +16,18 @@ public class Client {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "ID")
-    int id;
+    @SerializedName("id")
+    public int id;
 
+    @SerializedName("nom")
     String nom;
+    @SerializedName("Prenom")
     String Prenom;
+    @SerializedName("NoTel")
     String NoTel;
+    @SerializedName("email")
     String email;
+    @SerializedName("motDePasse")
     String motDePasse;
     //TODO ===> Ajout d'info NoPermisConduire, carte de crédit.
 

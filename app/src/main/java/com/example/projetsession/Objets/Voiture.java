@@ -6,6 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 @Entity(tableName = "Table_voiture")
@@ -14,15 +16,24 @@ public class Voiture {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "ID")
-    int id;
+    @SerializedName("id")
+    public int id;
 
+    @SerializedName("marque")
     String marque;
+    @SerializedName("modele")
     String modele;
+    @SerializedName("annee")
     Integer annee;
+    @SerializedName("prix")
     Double prix;
+    @SerializedName("categorie")
     String categorie;
+    @SerializedName("statutDisponible")
     boolean statutDisponible;
+    @SerializedName("description")
     String description;
+    @SerializedName("tarifJourn")
     Double tarifJourn;
 
 
