@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.projetsession.R;
 import com.example.projetsession.Voitures.GestionVoitures;
@@ -18,8 +19,10 @@ import com.example.projetsession.Voitures.ModifierVoiture;
 public class GestionClients extends AppCompatActivity {
 
     AccueilClient fragAccueilClient;
+    CreationCompte fragCreationCompte;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +31,34 @@ public class GestionClients extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         fragAccueilClient = new AccueilClient();
+        fragCreationCompte = new CreationCompte();
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.flFrag_GestClient, fragAccueilClient);
         fragmentTransaction.commit();
+
+
+        Intent intent = getIntent();
+        String extraFragment;
+
+        if(intent.hasExtra("FragmentDemande")){
+
+            extraFragment = intent.getStringExtra("FragmentDemande");
+
+           if(extraFragment.equals("CreationCompte")){
+
+               fragmentManager = getSupportFragmentManager();
+               fragmentTransaction = fragmentManager.beginTransaction();
+               fragmentTransaction.replace(R.id.flFrag_GestClient, fragCreationCompte);
+               fragmentTransaction.commit();
+
+           }
+        }
+
+
+
+
 
 
 

@@ -14,7 +14,7 @@ public class Voiture {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "ID")
-    int id;
+    int id_voiture;
 
     String marque;
     String modele;

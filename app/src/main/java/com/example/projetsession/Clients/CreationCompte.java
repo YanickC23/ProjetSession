@@ -24,6 +24,9 @@ public class CreationCompte extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+
     }
 
     @Override
@@ -33,10 +36,7 @@ public class CreationCompte extends Fragment {
         return inflater.inflate(R.layout.fragment_creation_compte, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
 
-    }
 
     @Override
     public void onAttach(Context context) {
