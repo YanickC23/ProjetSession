@@ -40,5 +40,38 @@
     <string name="BienvClient_btnMesVoitures">Mes Voitures</string>
     <string name="BienvClient_BtnLouer">Louer une Voiture</string>
 
+
+    <!--
+        Textes long utilisé dans les layouts
+    -->
+
+    <string name="QuiSommeNous">Notre service consiste à concilier les
+        besoins de la population à utiliser un véhicule sans devoir le posséder,
+        ainsi que les besoins des propriétaires de véhicule de rentabiliser leurs
+        investissement en l\'offrant à la location lorsqu\'ils ne s\'en servent pas. </string>
+
+    <string name="Accueil_Louer">Louer votre véhicule Vous
+        posséder un ou plusieurs véhicules? Vous souhaiter
+        en rentabiliser l\'acquisition?
+        Offrez-le à la location, les autres clients profiterons
+        d\'une offre élargie et vous ferez de l\'argent avec votre actif.
+        Gagnant gagnant, tous simplement. </string>
+
+
+    <string name="Accueil_MettreLocation">Louer un véhicule Vous ne posséder pas
+        de véhicule? Vous avez besoin d\'un type particuler de véhicule?
+        Venez voir nos offres. Notre flotte comporte une gamme étendue
+        de choix qui saura répondre à tous vos besoin, quels qu\'il soient. </string>
+
+
+
+    <string name="LoremIpsum">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.  </string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
