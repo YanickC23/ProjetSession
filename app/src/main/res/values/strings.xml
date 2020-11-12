@@ -26,12 +26,16 @@
     <string name="EmailClient">Courriel</string>
     <string name="mdp_1_Client">Mot de Passe</string>
     <string name="mdp_2_Client">Répéter MDP</string>
+    <string name="noPermisClient">Permis Conduire</string>
+    <string name="carteCreditClient">Carte de Crédit</string>
     <string name="hintNomClient">Votre Nom de famille</string>
     <string name="hintPrenomClient">Votre prénom</string>
     <string name="hintNotelClient">ex: 819-555-4545</string>
     <string name="hintEmailClient">ex: monnom@xyz.ca</string>
     <string name="hintmdp_1_Client">ex:hr3U?h24Etl</string>
     <string name="hintmdp_2_Client">**********</string>
+    <string name="hintNoPermisClient">M1111-010100-01</string>
+    <string name="hintNoCarteCreditClient">1111 1111 1111 1111</string>
 
     <string name="BienvClient_1">Bonjour cher client</string>
     <string name="BienvClient_2">Bienvenue chez notreEntreprise. Que soit pour louer un véhicule ou mettre un véhicule en location,
@@ -62,7 +66,6 @@
         de véhicule? Vous avez besoin d\'un type particuler de véhicule?
         Venez voir nos offres. Notre flotte comporte une gamme étendue
         de choix qui saura répondre à tous vos besoin, quels qu\'il soient. </string>
-
 
 
     <string name="LoremIpsum">Lorem ipsum dolor sit amet,

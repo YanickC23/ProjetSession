@@ -31,6 +31,7 @@ public class Client {
 
     public Client(String _Nom, String _Prenom, String _NoTel, String _Email,
                   String _MotDePasse, String _NoPermis, String _Carte_Credit){
+
        this.nom = _Nom;
        this.Prenom = _Prenom;
        this.NoTel = _NoTel;
@@ -96,6 +97,12 @@ public class Client {
     public void setCarte_credit(String carte_credit) {
         this.carte_credit = carte_credit;
     }
+
+    public String getNomPrenomClient(){
+       return Prenom + " " + nom;
+    }
+
+
 
 
     @Override

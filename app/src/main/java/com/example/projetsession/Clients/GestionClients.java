@@ -11,12 +11,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.projetsession.Objets.Client;
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 import com.example.projetsession.Voitures.GestionVoitures;
 import com.example.projetsession.Voitures.Liste_MesVoitures;
 import com.example.projetsession.Voitures.ModifierVoiture;
 
-public class GestionClients extends AppCompatActivity {
+import java.util.List;
+
+public class GestionClients extends AppCompatActivity  implements CreationCompte.InterfaceCreationCompte,
+                                                                    ListeClients.InterfaceListe_Clients{
 
     AccueilClient fragAccueilClient;
     CreationCompte fragCreationCompte;
@@ -58,10 +63,6 @@ public class GestionClients extends AppCompatActivity {
 
 
 
-
-
-
-
     }
 
 
@@ -72,7 +73,13 @@ public class GestionClients extends AppCompatActivity {
 
 
 
+    public void CreerCompteClient(Client client){
+        Singleton.getInstance().AjoutClient_ListeClient(client);
+    }
 
+    public List<Client> CreerListeClients(){
+        return Singleton.getInstance().getListeClients();
+    }
 
 
 }

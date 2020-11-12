@@ -100,6 +100,10 @@ public class Singleton {
 
     }
 
+    public void AjoutClient_ListeClient(Client client){
+        listeClients.add(client);
+    }
+
 
     public String Obt_MarqueVoiture(int index){
         return listeVoitures.get(index).getMarque();
@@ -132,6 +136,38 @@ public class Singleton {
     public String Obt_Statut(int index){
         return listeVoitures.get(index).getStatutLocation();
     }
+
+
+
+    public  String Obt_NomClient(int index){
+        return listeClients.get(index).getNom();
+    }
+    public  String Obt_PrenomClient(int index){
+        return listeClients.get(index).getPrenom();
+    }
+    public  String Obt_NoTelClient(int index){
+        return listeClients.get(index).getNoTel();
+    }
+    public  String Obt_CourrielClient(int index){
+        return listeClients.get(index).getEmail();
+    }
+    public  String Obt_MotDePasseClient(int index){
+        return listeClients.get(index).getMotDePasse();
+    }
+    public  String Obt_NoPermis(int index){
+        return listeClients.get(index).getNoPermis();
+    }
+    public  String Obt_CarteCredit(int index){
+        return listeClients.get(index).getCarte_credit();
+    }
+
+    public  String Obt_Prenom_Nom_Client(int index){
+        return listeClients.get(index).getNomPrenomClient();
+    }
+
+
+
+
 
 
 }
