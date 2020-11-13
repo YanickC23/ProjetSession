@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -23,6 +26,7 @@ import java.util.List;
 public class GestionClients extends AppCompatActivity  implements CreationCompte.InterfaceCreationCompte,
                                                                     ListeClients.InterfaceListe_Clients{
 
+    ListeClients fragListeClient;
     AccueilClient fragAccueilClient;
     CreationCompte fragCreationCompte;
     FragmentManager fragmentManager;
@@ -37,6 +41,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
 
         fragAccueilClient = new AccueilClient();
         fragCreationCompte = new CreationCompte();
+        fragListeClient = new ListeClients();
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -64,6 +69,50 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
 
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_gestvoiture, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        menu.findItem(R.id.mnListeClient).setVisible(true);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+
+        switch (menuItem.getItemId()){
+
+            case R.id.mnListeClient:
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.flFrag_GestClient, fragListeClient);
+                fragmentTransaction.commit();
+                return true;
+
+
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public void Activite_GestVoit_ListeMesVoit(){

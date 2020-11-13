@@ -47,7 +47,7 @@ public class ListeClients extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_liste_clients, container, false);
+        View view = inflater.inflate(R.layout.activity_gestion_client, container, false);
         recyclerView = view.findViewById(R.id.rvClients);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

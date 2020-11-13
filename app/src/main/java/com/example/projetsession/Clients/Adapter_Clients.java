@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,10 +54,9 @@ public class Adapter_Clients  extends RecyclerView.Adapter<Adapter_Clients.MonVi
 
     @Override
     public void onBindViewHolder(@NonNull MonViewHolder holder, int position){
-
         holder.tvPrenom.setText(Singleton.getInstance().Obt_PrenomClient(position));
         holder.tvNom.setText(Singleton.getInstance().Obt_NomClient(position));
-
+        //Toast.makeText(holder.tvNom.getContext(),Singleton.getInstance().Obt_PrenomClient(position), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -78,28 +78,10 @@ public class Adapter_Clients  extends RecyclerView.Adapter<Adapter_Clients.MonVi
         public MonViewHolder(View view){
             super(view);
 
-            tvPrenom = view.findViewById(R.id.tvMarqueModele);
-            tvNom = view.findViewById(R.id.tvAnne);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            tvPrenom = view.findViewById(R.id.tvPrenomClient);
+            tvNom = view.findViewById(R.id.tvNomClient);
 
 
-                    int position;
-                    position = getAdapterPosition();
-
-
-                    SharedPreferences pref = view.getContext().getSharedPreferences("PositLstClient",MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putInt("PositLstClient", position);
-                    editor.commit();
-
-
-
-
-                }
-            });
 
         }
     }
