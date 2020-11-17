@@ -24,7 +24,8 @@ import com.example.projetsession.Voitures.ModifierVoiture;
 import java.util.List;
 
 public class GestionClients extends AppCompatActivity  implements CreationCompte.InterfaceCreationCompte,
-                                                                    ListeClients.InterfaceListe_Clients{
+                                                                    ListeClients.InterfaceListe_Clients,
+                                                                        ModificationCompte.InterfaceModifierCompte{
 
     ListeClients fragListeClient;
     AccueilClient fragAccueilClient;
@@ -125,6 +126,14 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
     public void CreerCompteClient(Client client){
         Singleton.getInstance().AjoutClient_ListeClient(client);
     }
+
+    public void ModifierCompteClient(int index ,String _Nom, String _Prenom, String _NoTel, String _Email,
+                                     String _MotDePasse, String _NoPermis, String _Carte_Credit){
+
+        Singleton.getInstance().Modifier_ListeClients( index , _Nom,  _Prenom,  _NoTel,  _Email,
+                 _MotDePasse,  _NoPermis,  _Carte_Credit);
+    }
+
 
     public List<Client> CreerListeClients(){
         return Singleton.getInstance().getListeClients();

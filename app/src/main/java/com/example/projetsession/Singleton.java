@@ -104,6 +104,21 @@ public class Singleton {
         listeClients.add(client);
     }
 
+    public void Modifier_ListeClients(int index ,String _Nom, String _Prenom, String _NoTel, String _Email,
+                                       String _MotDePasse, String _NoPermis, String _Carte_Credit){
+
+        listeClients.get(index).setNom(_Nom);
+        listeClients.get(index).setPrenom(_Prenom);
+        listeClients.get(index).setNoTel(_NoTel);
+        listeClients.get(index).setEmail(_Email);
+        listeClients.get(index).setMotDePasse(_MotDePasse);
+        listeClients.get(index).setNoPermis(_NoPermis);
+        listeClients.get(index).setCarte_credit(_Carte_Credit);
+
+
+    }
+
+
 
     public String Obt_MarqueVoiture(int index){
         return listeVoitures.get(index).getMarque();

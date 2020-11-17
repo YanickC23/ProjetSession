@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
+import com.example.projetsession.Voitures.FicheVoiture;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Adapter_Clients  extends RecyclerView.Adapter<Adapter_Clients.MonViewHolder>{
 
-
+    ModificationCompte fragModifCompte;
     private List<Client> listeClients;
     AlertDialog.Builder builder;
 
@@ -80,8 +81,33 @@ public class Adapter_Clients  extends RecyclerView.Adapter<Adapter_Clients.MonVi
 
             tvPrenom = view.findViewById(R.id.tvPrenomClient);
             tvNom = view.findViewById(R.id.tvNomClient);
+            fragModifCompte = new ModificationCompte();
 
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    int position;
+                    position = getAdapterPosition();
+
+
+                    SharedPreferences pref = view.getContext().getSharedPreferences("PositLstClients",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putInt("PositLstClients", position);
+                    editor.commit();
+
+                    fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.flFrag_GestClient, fragModifCompte);
+                    fragmentTransaction.commit();
+
+
+
+
+                }
+            });
 
         }
     }
