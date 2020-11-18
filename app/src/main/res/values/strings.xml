@@ -45,6 +45,12 @@
     <string name="BienvClient_BtnLouer">Louer une Voiture</string>
 
 
+    <string name="Login_CreerCompte">Créer un Compte</string>
+    <string name="Login_Connexion">Connexion</string>
+    <string name="Login_Email">Adresse Courriel</string>
+    <string name="Login_MotdePasse">Mot de Passe</string>
+
+
     <!--
         Textes long utilisé dans les layouts
     -->
