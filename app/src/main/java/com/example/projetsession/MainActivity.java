@@ -1,9 +1,15 @@
 package com.example.projetsession;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.retrofit.InterfaceServeur;
@@ -26,12 +32,68 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(verifierPermissions())
+        {
+            lancerProgramme();
+        }
+
+
         liste = new ArrayList<Client>();
-        remplirListe();
+        //remplirListe();
         //getUtilisateur();
         //getUtilisateurById();
 
     }
+
+    private void lancerProgramme() {
+    }
+
+    public boolean verifierPermissions()
+    {
+        String[] permissions = {Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        List<String> listePermissionsADemander = new ArrayList<>();
+
+        for(int i=0; i< permissions.length; i++)
+        {
+            if(ContextCompat.checkSelfPermission(this,permissions[i]) != PackageManager.PERMISSION_GRANTED)
+            {
+                listePermissionsADemander.add(permissions[i]);
+            }
+        }
+
+        if(listePermissionsADemander.isEmpty())
+            return true;
+        else
+        {
+            ActivityCompat.requestPermissions(this, listePermissionsADemander.toArray(new String[listePermissionsADemander.size()]),1111 );
+
+            return false;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        int nbPermissionsRefusees = 0;
+
+        for(int i = 0; i<grantResults.length; i++ )
+        {
+            if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                nbPermissionsRefusees++;
+            }
+        }
+
+        //s'il y a des persmissions qui ne sont pas accordées on l'indique à l'utilisateur
+        //sinon si toutes les permissions sont accordées, on peut rouler le programme
+        if(nbPermissionsRefusees > 0)
+            Toast.makeText(this, "Veuillez accepter les permissions", Toast.LENGTH_LONG).show();
+        else
+            lancerProgramme();
+
+    }
+
+
+
     public void remplirListe() {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<List<Client>> call = serveur.getAllClientFromServer();
