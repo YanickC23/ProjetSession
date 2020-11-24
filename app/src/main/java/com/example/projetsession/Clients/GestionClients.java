@@ -84,6 +84,12 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
                         fragmentTransaction.commit();
                         return true;*/
 
+                    case R.id.mnListeClient:
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.flFrag_GestClient, fragListeClient);
+                    fragmentTransaction.commit();
+                    return true;
+
                 }
 
                 return false;
