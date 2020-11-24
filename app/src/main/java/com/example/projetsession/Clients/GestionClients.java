@@ -1,5 +1,6 @@
 package com.example.projetsession.Clients;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import com.example.projetsession.Singleton;
 import com.example.projetsession.Voitures.GestionVoitures;
 import com.example.projetsession.Voitures.Liste_MesVoitures;
 import com.example.projetsession.Voitures.ModifierVoiture;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
     CreationCompte fragCreationCompte;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-
+    BottomNavigationView bottomNavClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         setContentView(R.layout.activity_gestion_client);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        bottomNavClient = findViewById(R.id.bnvClient);
         fragAccueilClient = new AccueilClient();
         fragCreationCompte = new CreationCompte();
         fragListeClient = new ListeClients();
@@ -67,7 +70,27 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
            }
         }
 
+        bottomNavClient.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
 
+
+
+                switch (menuItem.getItemId()){
+
+                   /* case R.id.mnListe:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFragment, fragListeEvent);
+                        fragmentTransaction.commit();
+                        return true;*/
+
+                }
+
+                return false;
+
+            }
+
+        });
 
     }
 

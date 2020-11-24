@@ -2,12 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mnLouer"
-        android:title="Louer une Voiture" />
+        android:id="@+id/mnOffrirLocation"
+        android:icon="@drawable/icone_offrir"
+        android:title="Offrir en Location" />
     <item
         android:id="@+id/mnMesAuto"
+        android:icon="@drawable/icone_voitures"
         android:title="Mes Véhicules" />
     <item
         android:id="@+id/mnMonProfil"
+        android:icon="@drawable/icone_profil"
         android:title="Mon Profil" />
 </menu>
