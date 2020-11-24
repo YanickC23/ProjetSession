@@ -42,7 +42,7 @@
         <activity
             android:name=".Clients.GestionClients"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Accueil.Accueil"</activity>
+        <activity android:name=".Accueil.Accueil"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
