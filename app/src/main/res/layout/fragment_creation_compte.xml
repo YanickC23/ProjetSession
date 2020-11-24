@@ -7,7 +7,7 @@
     tools:context=".Clients.CreationCompte" >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtTitreModifCompte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
@@ -35,18 +35,19 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/NomClient"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxNom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintNomClient" />
+                android:hint="@string/hintNomClient"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,18 +59,19 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/PrenomClient"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxPrenom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintPrenomClient" />
+                android:hint="@string/hintPrenomClient"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,18 +83,19 @@
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/NotelClient"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxNotel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintNotelClient" />
+                android:hint="@string/NotelClient"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,18 +107,19 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/EmailClient"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintEmailClient" />
+                android:hint="@string/hintEmailClient"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,18 +131,19 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/mdp_1_Client"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxMotdepasse_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintmdp_1_Client" />
+                android:hint="@string/hintmdp_1_Client"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,18 +155,19 @@
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="8"
                 android:text="@string/mdp_2_Client"
+                android:textAlignment="textEnd"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/edxMotdepasse_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/hintmdp_2_Client" />
+                android:hint="@string/hintmdp_2_Client"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <Button

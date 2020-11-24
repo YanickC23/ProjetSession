@@ -1,7 +1,7 @@
 package com.example.projetsession.Voitures;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,29 +10,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 
 
-public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface_AdapterVoiture {
+public class FicheVoiture extends Fragment {
 
     ModifierVoiture fragModifierVoiture;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
-    private Adapter_Voitures adapter_voitures;
 
-    TextView txtMarque, txtModele, txtAnnee, txtCategorie,
+    TextView txtMarqueModele, txtModele, txtAnnee, txtCategorie,
             txtDescription, txtTarif, txtValeur, txtDispo;
+
+
 
 
     Button btnModif;
@@ -41,9 +41,7 @@ public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface
         // Required empty public constructor
     }
 
-    public int positVoiture_a_FicheVoiture(int position){
-        return position;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,8 +63,7 @@ public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
 
-            txtMarque = view.findViewById(R.id.txtFich_Marque);
-            txtModele = view.findViewById(R.id.txtFich_Modele);
+            txtMarqueModele = view.findViewById(R.id.txtFich_MarqueModele);
             txtAnnee = view.findViewById(R.id.txtFich_Anne);
             txtCategorie = view.findViewById(R.id.txtFich_Categorie);
             txtTarif = view.findViewById(R.id.txtFich_Tarif);
@@ -75,9 +72,15 @@ public class FicheVoiture extends Fragment implements Adapter_Voitures.Interface
             btnModif = view.findViewById(R.id.btnModifVoiture);
             fragModifierVoiture = new ModifierVoiture();
 
+            SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstMVoit", Context.MODE_PRIVATE);
+            int positLstMVoit = pref.getInt("PositLstMVoit", 0);
 
-
-
+            txtMarqueModele.setText(Singleton.getInstance().Obt_MarqueModele(positLstMVoit));
+            txtAnnee.setText(Integer.toString(Singleton.getInstance().Obt_AnneeVoiture(positLstMVoit)));
+            txtCategorie.setText(Singleton.getInstance().Obt_CategorieVoiture(positLstMVoit));
+            txtTarif.setText(Double.toString(Singleton.getInstance().Obt_TarifJournVoiture(positLstMVoit)));
+            txtValeur.setText(Double.toString(Singleton.getInstance().Obt_PrixVoiture(positLstMVoit)));
+            txtDispo.setText(Singleton.getInstance().Obt_Statut(positLstMVoit));
 
 
         btnModif.setOnClickListener(new View.OnClickListener() {

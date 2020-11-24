@@ -3,6 +3,7 @@ package com.example.projetsession.Voitures;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
+import com.example.projetsession.Singleton;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonViewHolder> {
 
@@ -30,24 +34,12 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
     FragmentTransaction fragmentTransaction;
 
 
-    private Interface_AdapterVoiture interface_adapterVoiture;
+
 
     public Adapter_Voitures(List<Voiture>list){
 
         this.listeVoitures = list;
     }
-
-
-
-
-    public interface Interface_AdapterVoiture{
-        int positVoiture_a_FicheVoiture(int position);
-    }
-
-    public void lstVoit_Listener(Interface_AdapterVoiture interface_adapterVoiture){
-        this.interface_adapterVoiture = interface_adapterVoiture;
-    }
-
 
 
 
@@ -61,16 +53,17 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
         return new MonViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull MonViewHolder holder, int position){
 
-        holder.tvMarque.setText(listeVoitures.get(position).getMarque());
-        holder.tvModele.setText(listeVoitures.get(position).getModele());
-        holder.tvAnnee.setText(listeVoitures.get(position).getAnnee().toString());
-        holder.tvCategorie.setText(listeVoitures.get(position).getCategorie());
-        holder.tvTarif.setText(listeVoitures.get(position).getTarifJourn().toString());
-        holder.tvValeur.setText(listeVoitures.get(position).getPrix().toString());
-        holder.tvStatutDispo.setText(listeVoitures.get(position).getStatutLocation());
+        holder.tvMarqueModele.setText(Singleton.getInstance().Obt_MarqueModele(position).toString());
+        holder.tvAnnee.setText(Integer.toString(Singleton.getInstance().Obt_AnneeVoiture(position)));
+        holder.tvCategorie.setText(Singleton.getInstance().Obt_CategorieVoiture(position).toString());
+        holder.tvTarif.setText(Double.toString(Singleton.getInstance().Obt_TarifJournVoiture(position)));
+        holder.tvValeur.setText(Double.toString(Singleton.getInstance().Obt_PrixVoiture(position)));
+        holder.tvStatutDispo.setText(Singleton.getInstance().Obt_Statut(position).toString());
 
     }
 
@@ -87,15 +80,14 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
 
     public class MonViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvMarque, tvModele, tvAnnee, tvCategorie,
+        TextView tvMarqueModele, tvAnnee, tvCategorie,
                 tvTarif, tvValeur, tvStatutDispo;
 
 
         public MonViewHolder(View view){
             super(view);
 
-            tvMarque = view.findViewById(R.id.tvMarque);
-            tvModele = view.findViewById(R.id.tvModele);
+            tvMarqueModele = view.findViewById(R.id.tvMarqueModele);
             tvAnnee = view.findViewById(R.id.tvAnne);
             tvCategorie = view.findViewById(R.id.tvCategorie);
             tvTarif = view.findViewById(R.id.tvTarif);
@@ -107,10 +99,16 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
                 @Override
                 public void onClick(View view) {
 
-                    Integer position;
+
+                    int position;
                     position = getAdapterPosition();
 
-                    interface_adapterVoiture.positVoiture_a_FicheVoiture(position);
+
+                    SharedPreferences pref = view.getContext().getSharedPreferences("PositLstMVoit",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putInt("PositLstMVoit", position);
+                    editor.commit();
+
                     fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragFicheVoiture);
