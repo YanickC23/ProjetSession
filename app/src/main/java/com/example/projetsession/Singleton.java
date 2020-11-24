@@ -177,7 +177,7 @@ public class Singleton {
     }
 
     public  String Obt_Prenom_Nom_Client(int index){
-        return listeClients.get(index).getNomPrenomClient();
+        return listeClients.get(index).getNom() + " " + listeClients.get(index).getPrenom();
     }
 
 
