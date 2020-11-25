@@ -7,7 +7,4 @@
     <item
         android:id="@+id/mnListeVoiture"
         android:title="Liste des Voitures" />
-    <item
-        android:id="@+id/mnListeClient"
-        android:title="ListeClient" />
 </menu>

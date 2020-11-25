@@ -5,11 +5,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.projetsession.Clients.AccueilClient;
 import com.example.projetsession.R;
 
-public class Accueil extends AppCompatActivity {
+public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
 
     PageAccueil pageAccueil;
     FragmentManager fragmentManager;
@@ -30,4 +33,14 @@ public class Accueil extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
+
+
+
+
+   public String ValiderConnexion(String identifiant, String motDePasse){
+        return "OK, Connection Valide!!!!";
+   }
+
+
+
 }

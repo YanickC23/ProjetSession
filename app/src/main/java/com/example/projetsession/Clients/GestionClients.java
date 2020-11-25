@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +33,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
     ListeClients fragListeClient;
     AccueilClient fragAccueilClient;
     CreationCompte fragCreationCompte;
+    ModificationCompte fragModifCompte;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     BottomNavigationView bottomNavClient;
@@ -46,11 +48,13 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         fragAccueilClient = new AccueilClient();
         fragCreationCompte = new CreationCompte();
         fragListeClient = new ListeClients();
+        fragModifCompte = new ModificationCompte();
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.flFrag_GestClient, fragAccueilClient);
         fragmentTransaction.commit();
+
 
 
         Intent intent = getIntent();
@@ -78,17 +82,23 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
 
                 switch (menuItem.getItemId()){
 
-                   /* case R.id.mnListe:
+                    case R.id.mnMonProfil:
                         fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.flFragment, fragListeEvent);
+                        fragmentTransaction.replace(R.id.flFrag_GestClient, fragModifCompte);
                         fragmentTransaction.commit();
-                        return true;*/
+                        return true;
 
                     case R.id.mnListeClient:
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.flFrag_GestClient, fragListeClient);
-                    fragmentTransaction.commit();
-                    return true;
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFrag_GestClient, fragListeClient);
+                        fragmentTransaction.commit();
+                        return true;
+
+                    case R.id.mnOffrirLocation:
+                        Intent intent = new Intent(getApplicationContext(), GestionVoitures.class);
+                        intent.putExtra("FragmentDemande", "OffrirLocation");
+                        startActivity(intent);
+                        return true;
 
                 }
 
@@ -101,22 +111,24 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
     }
 
 
-    @Override
+  /* @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_gestvoiture, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
 
-    @Override
+
+   /* @Override
     public boolean onPrepareOptionsMenu(Menu menu){
         menu.findItem(R.id.mnListeClient).setVisible(true);
         return super.onPrepareOptionsMenu(menu);
     }
 
-
-    @Override
+*/
+  /*
+   @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
 
         switch (menuItem.getItemId()){
@@ -132,7 +144,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
-    }
+    }*/
 
 
 

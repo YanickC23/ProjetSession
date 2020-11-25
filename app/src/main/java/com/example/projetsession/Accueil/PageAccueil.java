@@ -2,6 +2,7 @@ package com.example.projetsession.Accueil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,24 +16,33 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.projetsession.Clients.CreationCompte;
 import com.example.projetsession.Clients.GestionClients;
 import com.example.projetsession.R;
 import com.example.projetsession.Voitures.FicheVoiture;
 
-public class PageAccueil extends Fragment {
+public class PageAccueil extends Fragment  {
 
-    Button btnCompte;
+    Login login;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
 
-
+    InterfacePageAccueil interfacePageAccueil;
+    Spinner spinner;
 
     public PageAccueil() {
         // Required empty public constructor
     }
 
+    public interface InterfacePageAccueil{
 
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,26 +60,52 @@ public class PageAccueil extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
 
-        btnCompte = view.findViewById(R.id.btnCompte);
+        spinner = view.findViewById(R.id.spnConnectInscr);
+        login = new Login();
 
-        btnCompte.setOnClickListener(new View.OnClickListener() {
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this.getContext(),
+                                                R.array.SpinnerChoix, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String item = adapterView.getItemAtPosition(position).toString();
+                switch (item){
 
-                Intent intent = new Intent(view.getContext(), GestionClients.class);
-                intent.putExtra("FragmentDemande", "CreationCompte");
-                startActivity(intent);
+                    case "Me Connecter":
+                        fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.add(R.id.Fl_FragAccueil, login);
+                        fragmentTransaction.commit();
+                        break;
 
+                    case "M'Inscrire":
+                        Intent intent = new Intent(view.getContext(), GestionClients.class);
+                        intent.putExtra("FragmentDemande", "CreationCompte");
+                        startActivity(intent);
+                        break;
+                }
+            }
 
-
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // TODO Auto-generated method stub
             }
         });
+
     }
+
+
+
+
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
+//        interfacePageAccueil = (InterfacePageAccueil) context;
     }
 
 

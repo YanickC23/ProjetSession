@@ -38,7 +38,9 @@ public class Client {
     }
 
 
-    public Client(String _Nom, String _Prenom, String _NoTel, String _Email, String _MotDePasse, String _NoPermis, String _Carte_credit){
+    public Client(String _Nom, String _Prenom, String _NoTel,
+                    String _Email, String _MotDePasse, String _NoPermis,
+                        String _Carte_credit){
        this.nom = _Nom;
        this.Prenom = _Prenom;
        this.NoTel = _NoTel;

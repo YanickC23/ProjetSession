@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="spinnerTheme">
+        <item name="android:background">@color/couleurComplementaire_1</item>
+        <item name="android:textColor">@color/couleurTexteBouton</item>
+        <!-- this is for api 19 text color -->
+        <item name="android:color">@color/couleurTexteBouton</item>
+    </style>
+
+
 </resources>

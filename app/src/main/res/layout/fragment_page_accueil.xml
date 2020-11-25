@@ -26,16 +26,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnCompte"
+        <Spinner
+            android:id="@+id/spnConnectInscr"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="8"
-            android:backgroundTint="@color/couleurSecondaire_1"
-            android:text="M'inscrire"
-            android:textColor="@color/couleurTexteBouton" />
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="6"
+            android:background="@drawable/spinner_background"
+            android:backgroundTintMode="src_in"
+            android:theme="@style/spinnerTheme" />
+
     </LinearLayout>
 
     <ScrollView

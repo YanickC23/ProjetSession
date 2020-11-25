@@ -13,4 +13,8 @@
         android:id="@+id/mnMonProfil"
         android:icon="@drawable/icone_profil"
         android:title="Mon Profil" />
+    <item
+        android:id="@+id/mnListeClient"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="ListeClient" />
 </menu>

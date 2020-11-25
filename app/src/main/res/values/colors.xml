@@ -6,5 +6,6 @@
     <color name="couleurBouton">#3F0A8A</color>
     <color name="couleurTexteBouton">#E4E2E6</color>
     <color name="couleurComplementaire_1">#8A0A55</color>
+    <color name="couleurComplementaire_Clair">#A8457F</color>
     <color name="couleurSecondaire_1">#7F0A8A</color>
 </resources>
