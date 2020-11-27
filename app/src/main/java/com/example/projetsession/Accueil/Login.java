@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projetsession.Clients.GestionClients;
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.R;
 
 
@@ -74,8 +75,14 @@ public class Login extends Fragment {
 
                 connect =  interfaceLogin.ValiderConnexion(identifiant, motDePasse);
 
-                Toast.makeText(view.getContext(), connect, Toast.LENGTH_LONG).show();
 
+                if(connect.equals("Valide")== true){
+                    Intent intent = new Intent(view.getContext(), GestionClients.class);
+                    intent.putExtra("FragmentDemande", "AccueilClient");
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(view.getContext(), "Le Mot de Passe n'est pas Valide.\n Accès Refusé. ", Toast.LENGTH_LONG).show();
+                }
 
                 edxIdentifiant.setText("");
                 edxMotDePasse.setText("");

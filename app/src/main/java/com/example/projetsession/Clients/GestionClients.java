@@ -50,28 +50,26 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         fragListeClient = new ListeClients();
         fragModifCompte = new ModificationCompte();
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.flFrag_GestClient, fragAccueilClient);
-        fragmentTransaction.commit();
-
-
-
         Intent intent = getIntent();
         String extraFragment;
 
         if(intent.hasExtra("FragmentDemande")){
-
             extraFragment = intent.getStringExtra("FragmentDemande");
 
            if(extraFragment.equals("CreationCompte")){
-
                fragmentManager = getSupportFragmentManager();
                fragmentTransaction = fragmentManager.beginTransaction();
                fragmentTransaction.replace(R.id.flFrag_GestClient, fragCreationCompte);
                fragmentTransaction.commit();
-
            }
+            if(extraFragment.equals("AccueilClient")){
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.flFrag_GestClient, fragAccueilClient);
+                fragmentTransaction.commit();
+            }
+
+
         }
 
         bottomNavClient.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjetSession</string>
+    <string name="app_name">Location express</string>
     <string name="app_comp_name">Location express</string>
 
     <string name="TitreMettreVoitureLocation">Mettre ma voiture en location</string>
@@ -51,6 +51,16 @@
     <string name="Login_MotdePasse">Mot de Passe</string>
 
 
+    <string name="rechercheParCategorie">Recherche Par Catégorie:</string>
+    <string name="hintRechercheParMarque">Recherche Par Marque:</string>
+    <string name="hintRechercheParModele">Recherche Par Modèle:</string>
+    <string name="hintRechercheParDate">Recherche Par Date:</string>
+    <string name="hintDateSup">Et le</string>
+    <string name="hintDateInf">Date Entre le</string>
+    <string name="hintTarifSup">Et Supérieur à</string>
+    <string name="hintTarifInf">Tarif Inférieur à</string>
+
+
     <!--
         Textes long utilisé dans les layouts
     -->
@@ -91,6 +101,21 @@
         <item>Me Connecter</item>
         <item>M\'Inscrire</item>
     </string-array>
+
+
+    <string-array name="SpinnerRechCategorie">
+        <item>Compacte</item>
+        <item>Berline</item>
+        <item>Minifourgonnette</item>
+        <item>Pickup</item>
+        <item>VUS</item>
+        <item>4x4</item>
+        <item>Multisegment</item>
+        <item>Sport</item>
+        <item>Décapotable</item>
+        <item>Électrique</item>
+    </string-array>
+
 
 
 </resources>

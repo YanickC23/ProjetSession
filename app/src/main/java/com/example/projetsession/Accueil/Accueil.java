@@ -38,7 +38,7 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
 
 
    public String ValiderConnexion(String identifiant, String motDePasse){
-        return "OK, Connection Valide!!!!";
+        return "Valide";
    }
 
 
