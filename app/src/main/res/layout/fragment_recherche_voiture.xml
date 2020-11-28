@@ -29,23 +29,14 @@
         android:background="?attr/colorBackgroundFloating"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/rechercheParCategorie"
-            android:textColor="?attr/actionMenuTextColor"
-            android:textColorHint="?attr/actionMenuTextColor"
-            android:textSize="16sp" />
-
         <Spinner
             android:id="@+id/spnRechVoiture"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:background="@drawable/spinner_rech_backgrd" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edxRechMarque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -56,7 +47,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/edxRechModele"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -72,6 +63,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/edxRechTarifInf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
@@ -83,7 +75,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/edxRechTarifSup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
@@ -102,32 +94,29 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editText3"
-                android:layout_width="match_parent"
+                android:id="@+id/edxRechDateInf"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
                 android:ems="10"
                 android:hint="@string/hintDateInf"
-                android:inputType="date"
-                android:textColor="?attr/editTextColor"
-                android:textColorHint="?attr/actionMenuTextColor"
-                android:textSize="16sp" />
+                android:inputType="textPersonName"
+                android:textColorHint="?attr/actionMenuTextColor" />
 
             <EditText
-                android:id="@+id/editText8"
-                android:layout_width="match_parent"
+                android:id="@+id/edxRechDateSup"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
                 android:ems="10"
                 android:hint="@string/hintDateSup"
-                android:inputType="date"
-                android:textColor="?attr/editTextColor"
-                android:textColorHint="?attr/actionMenuTextColor"
-                android:textSize="16sp" />
+                android:inputType="textPersonName"
+                android:textColorHint="?attr/actionMenuTextColor" />
+
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnRechVoitLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
