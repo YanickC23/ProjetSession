@@ -4,20 +4,23 @@ package com.example.projetsession.Objets;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-@Entity(tableName = "Table_client")
+@Entity(tableName = "Table_client",
+        indices = {@Index("id_client")})
+
 public class Client {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "ID")
-    @SerializedName("id")
-    public int id;
+    @ColumnInfo(name = "id_client")
+    @SerializedName("id_client")
+    public int id_client;
 
     @SerializedName("nom")
     String nom;
@@ -38,9 +41,11 @@ public class Client {
     }
 
 
-    public Client(String _Nom, String _Prenom, String _NoTel,
+    public Client(int _Id_client, String _Nom, String _Prenom, String _NoTel,
                     String _Email, String _MotDePasse, String _NoPermis,
                         String _Carte_credit){
+
+       this.id_client = _Id_client;
        this.nom = _Nom;
        this.Prenom = _Prenom;
        this.NoTel = _NoTel;
@@ -48,6 +53,14 @@ public class Client {
        this.motDePasse = _MotDePasse;
        this.noPermis = _NoPermis;
        this.carte_credit = _Carte_credit;
+    }
+
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
     }
 
     public String getNom() {
@@ -111,24 +124,26 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(nom, client.nom) &&
-                Objects.equals(Prenom, client.Prenom) &&
-                Objects.equals(NoTel, client.NoTel) &&
+        return id_client == client.id_client &&
+                nom.equals(client.nom) &&
+                Prenom.equals(client.Prenom) &&
+                NoTel.equals(client.NoTel) &&
                 Objects.equals(email, client.email) &&
-                Objects.equals(motDePasse, client.motDePasse)&&
-                Objects.equals(noPermis, client.noPermis) &&
-                Objects.equals(carte_credit, client.carte_credit);
+                Objects.equals(motDePasse, client.motDePasse) &&
+                noPermis.equals(client.noPermis) &&
+                carte_credit.equals(client.carte_credit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom, Prenom, NoTel, email, motDePasse);
+        return Objects.hash(id_client, nom, Prenom, NoTel, email, motDePasse, noPermis, carte_credit);
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "nom='" + nom + '\'' +
+                "id_client=" + id_client +
+                ", nom='" + nom + '\'' +
                 ", Prenom='" + Prenom + '\'' +
                 ", NoTel='" + NoTel + '\'' +
                 ", email='" + email + '\'' +

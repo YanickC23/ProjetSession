@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
                 liste = response.body();
-                Log.d("response",liste.get(0).id + " " + liste.get(0).getNom());
+                Log.d("response",liste.get(0).id_client + " " + liste.get(0).getNom());
             }
 
             @Override

@@ -1,10 +1,17 @@
 package com.example.projetsession;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.Room;
 
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.Objets.Voiture;
+import com.example.projetsession.ROOM.ClientDAO;
+import com.example.projetsession.ROOM.LocationDAO;
+import com.example.projetsession.ROOM.LocationDB;
+import com.example.projetsession.ROOM.VoitureDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +23,11 @@ public class Singleton {
     private List<Voiture> listeVoitures = new ArrayList<Voiture>();
     private List<Voiture> listeMesVoiture = new ArrayList<Voiture>();
     private List<Client> listeClients = new ArrayList<Client>();
+
+    LocationDB ldb;
+    VoitureDAO voitureDAO;
+    ClientDAO clientDAO;
+    LocationDAO locationDAO;
 
 
     private Singleton(){
@@ -30,6 +42,14 @@ public class Singleton {
         return Singlt;
     }
 
+    public LocationDB LDB(Context context){
+        LocationDB db_ldb;
+        db_ldb = Room.databaseBuilder(context , LocationDB.class, "LocationDB")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
+        return db_ldb;
+    }
 
     public static com.example.projetsession.Singleton getSinglt() {
         return Singlt;
@@ -40,15 +60,24 @@ public class Singleton {
     }
 
 
-    public List<Voiture> getListeVoitures() {
+    public List<Voiture> getListeVoitures(Context context) {
+        ldb = LDB(context);
+        voitureDAO = ldb.vdao();
+        listeVoitures = voitureDAO.getListe_Voiture();
         return listeVoitures;
     }
 
-    public List<Voiture> getListeMesVoiture() {
+    public List<Voiture> getListeMesVoiture(Context context) {
+      /*  ldb = LDB(context);
+        voitureDAO = ldb.vdao();
+        listeMesVoiture = voitureDAO.getProprioVoiture(idProprio);*/
         return listeMesVoiture;
     }
 
-    public List<Client> getListeClients() {
+    public List<Client> getListeClients(Context context) {
+        ldb = LDB(context);
+        clientDAO = ldb.cdao();
+        listeClients = clientDAO.get_ListeClients();
         return listeClients;
     }
 

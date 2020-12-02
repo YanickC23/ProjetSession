@@ -26,14 +26,14 @@ public interface VoitureDAO {
     @Query("DELETE FROM Table_Voiture")
     public void suprimerTous_Voiture();
 
-    @Query("SELECT * FROM Table_Voiture where id like :id")
-    public Voiture[] getVoiture(int id);
+    @Query("SELECT * FROM Table_Voiture where id_voiture like :id_voiture")
+    public Voiture[] getVoiture(int id_voiture);
 
-    /*@Query("SELECT * FROM Table_Voiture where proprietaire like :id")
+    /*@Query("SELECT * FROM Table_Voiture where proprio")
     public List<Voiture> getProprioVoiture(int id);*/
 
-    @Query("SELECT * FROM Table_Voiture where id like :id")
-    public List<Voiture> get_Voiture(String id);
+    @Query("SELECT * FROM Table_Voiture where id_voiture like :id_voiture")
+    public List<Voiture> get_Voiture(String id_voiture);
 
     @Query("SELECT * FROM Table_Voiture")
     public List<Voiture> getListe_Voiture();

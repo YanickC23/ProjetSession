@@ -4,31 +4,55 @@ package com.example.projetsession.Objets;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-@Entity(tableName = "Table_voiture")
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "Table_voiture",
+        indices = {@Index("id_voiture"), @Index("proprio")},
+        foreignKeys = {@ForeignKey(entity = Client.class,
+                        parentColumns = "id_client",
+                        childColumns = "proprio",
+                        onDelete = CASCADE)})
+
 public class Voiture {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "ID")
+    @ColumnInfo(name = "id_voiture")
+    @SerializedName("id_voiture")
     public int id_voiture;
 
+    @SerializedName("marque")
     String marque;
+    @SerializedName("modele")
     String modele;
+    @SerializedName("annee")
     Integer annee;
+    @SerializedName("prix")
     Double prix;
+    @SerializedName("categorie")
     String categorie;
+    @SerializedName("statutDisponible")
     boolean statutDisponible;
+    @SerializedName("description")
     String description;
+    @SerializedName("tarifJourn")
     Double tarifJourn;
+    @SerializedName("proprio")
+    Integer proprio;
 
-
-    public Voiture(String _Marque, String _Modele, Integer _Annee,
+    public Voiture(int _Id_voiture, String _Marque, String _Modele, Integer _Annee,
                    Double _Prix, boolean _StatutDispo, String _Description,
-                        Double _TarifJournalier, String _Categorie) {
+                        Double _TarifJournalier, String _Categorie, Integer _Proprio) {
+
+        this.id_voiture = _Id_voiture;
         this.marque = _Marque;
         this.modele = _Modele;
         this.annee = _Annee;
@@ -37,12 +61,21 @@ public class Voiture {
         this.description = _Description;
         this.tarifJourn = _TarifJournalier;
         this.categorie = _Categorie;
+        this.proprio = _Proprio;
     }
 
 
         public Voiture(){
 
         }
+
+    public int getId_voiture() {
+        return id_voiture;
+    }
+
+    public void setId_voiture(int id_voiture) {
+        this.id_voiture = id_voiture;
+    }
 
     public String getCategorie() {
         return categorie;
@@ -125,40 +158,50 @@ public class Voiture {
     }
 
 
+    public Integer getProprio() {
+        return proprio;
+    }
 
+    public void setProprio(Integer proprio) {
+        this.proprio = proprio;
+    }
 
+    @Override
+    public String toString() {
+        return "Voiture{" +
+                "id_voiture=" + id_voiture +
+                ", marque='" + marque + '\'' +
+                ", modele='" + modele + '\'' +
+                ", annee=" + annee +
+                ", prix=" + prix +
+                ", categorie='" + categorie + '\'' +
+                ", statutDisponible=" + statutDisponible +
+                ", description='" + description + '\'' +
+                ", tarifJourn=" + tarifJourn +
+                ", proprio=" + proprio +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Voiture voiture = (Voiture) o;
-        return statutDisponible == voiture.statutDisponible &&
-                Objects.equals(marque, voiture.marque) &&
-                Objects.equals(modele, voiture.modele) &&
-                Objects.equals(annee, voiture.annee) &&
-                Objects.equals(prix, voiture.prix) &&
-                Objects.equals(description, voiture.description)&&
-                Objects.equals(categorie, voiture.categorie)&&
-                Objects.equals(tarifJourn, voiture.tarifJourn);
+        return id_voiture == voiture.id_voiture &&
+                statutDisponible == voiture.statutDisponible &&
+                marque.equals(voiture.marque) &&
+                modele.equals(voiture.modele) &&
+                annee.equals(voiture.annee) &&
+                prix.equals(voiture.prix) &&
+                categorie.equals(voiture.categorie) &&
+                description.equals(voiture.description) &&
+                tarifJourn.equals(voiture.tarifJourn) &&
+                Objects.equals(proprio, voiture.proprio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marque, modele, annee, prix, statutDisponible, description, tarifJourn, categorie);
+        return Objects.hash(id_voiture, marque, modele, annee, prix, categorie, statutDisponible, description, tarifJourn, proprio);
     }
 
-    @Override
-    public String toString() {
-        return "Voiture{" +
-                "marque='" + marque + '\'' +
-                ", modele='" + modele + '\'' +
-                ", annee=" + annee +
-                ", prix=" + prix +
-                ", statutDisponible=" + statutDisponible +
-                ", categorie='" + categorie + '\'' +
-                ", description='" + description + '\'' +
-                ", TarifJournalier='" + tarifJourn  +
-                '}';
-    }
 }

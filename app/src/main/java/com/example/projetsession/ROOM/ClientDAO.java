@@ -29,8 +29,8 @@ public interface ClientDAO {
     @Query("SELECT * FROM Table_Client")
     public Client[] getClients_Tous();
 
-    @Query("SELECT * FROM Table_Client WHERE id LIKE :id")
-    public Client[] getClients(int id);
+    @Query("SELECT * FROM Table_Client WHERE id_client LIKE :id_client")
+    public Client[] getClients(int id_client);
 
     @Query("SELECT * FROM Table_Client")
     public List<Client> get_ListeClients();
