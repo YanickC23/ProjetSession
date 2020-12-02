@@ -175,7 +175,7 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
 
 
     public List<Client> CreerListeClients(){
-        return Singleton.getInstance().getListeClients();
+        return Singleton.getInstance().getListeClients(this);
     }
 
 

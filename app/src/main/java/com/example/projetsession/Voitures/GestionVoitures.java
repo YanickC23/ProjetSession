@@ -122,7 +122,7 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
 
     public List<Voiture> CreerListeMesVoitures(){
 
-        return Singleton.getInstance().getListeVoitures();
+        return Singleton.getInstance().getListeVoitures(this);
     }
 
 

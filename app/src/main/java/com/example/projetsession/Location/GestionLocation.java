@@ -63,7 +63,7 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
 
     public List<Voiture> CreerListeLocationVoitures(){
 
-        return Singleton.getInstance().getListeVoitures();
+        return Singleton.getInstance().getListeVoitures(this);
     }
 
 

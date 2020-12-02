@@ -12,6 +12,7 @@ import com.example.projetsession.ROOM.ClientDAO;
 import com.example.projetsession.ROOM.LocationDAO;
 import com.example.projetsession.ROOM.LocationDB;
 import com.example.projetsession.ROOM.VoitureDAO;
+import com.example.projetsession.ROOM.Voiture_LocationDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class Singleton {
     VoitureDAO voitureDAO;
     ClientDAO clientDAO;
     LocationDAO locationDAO;
+    Voiture_LocationDAO voiture_locationDAO;
 
 
     private Singleton(){
