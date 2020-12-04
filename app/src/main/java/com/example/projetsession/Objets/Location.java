@@ -6,19 +6,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 import java.util.Objects;
-
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "Table_location",
         indices = {@Index("id_location"), @Index("id_client")},
         foreignKeys = {@ForeignKey(entity = Client.class,
                                             parentColumns = "id_client",
-                                            childColumns = "proprio",
+                                            childColumns = "id_client",
                                             onDelete = CASCADE)})
 
 public class Location {
@@ -33,9 +29,9 @@ public class Location {
     @SerializedName("id_client")
     int id_client;
     @SerializedName("date_debut")
-    Date date_debut;
+    String date_debut;
     @SerializedName("date_fin")
-    Date date_fin;
+    String date_fin;
     //TODO ==> Lieu collecte véhicule.
 
 
@@ -43,7 +39,7 @@ public class Location {
 
     }
 
-        public Location(int _Id_location, int _Id_Client, Date _Date_Debut, Date _Date_Fin){
+        public Location(int _Id_location, int _Id_Client, String _Date_Debut, String _Date_Fin){
             this.id_location = _Id_location;
             this.id_client = _Id_Client;
             this.date_debut = _Date_Debut;
@@ -66,29 +62,19 @@ public class Location {
         this.id_client = id_client;
     }
 
-    public Date getDate_debut() {
+    public String getDate_debut() {
         return date_debut;
     }
 
-    public void setDate_debut(Date date_debut) {
+    public void setDate_debut(String date_debut) {
         this.date_debut = date_debut;
     }
 
-    public Date getDate_fin() {
+    public String getDate_fin() {
         return date_fin;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id_location=" + id_location +
-                ", id_client=" + id_client +
-                ", date_debut=" + date_debut +
-                ", date_fin=" + date_fin +
-                '}';
-    }
-
-    public void setDate_fin(Date date_fin) {
+    public void setDate_fin(String date_fin) {
         this.date_fin = date_fin;
     }
 
@@ -108,5 +94,16 @@ public class Location {
     public int hashCode() {
         return Objects.hash(id_location, id_client, date_debut, date_fin);
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id_location=" + id_location +
+                ", id_client=" + id_client +
+                ", date_debut='" + date_debut + '\'' +
+                ", date_fin='" + date_fin + '\'' +
+                '}';
+    }
+
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
 public interface LocationDAO {
 
 
-    /*@Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     public long ajouterLocation(Location u);
 
     @Update
@@ -29,7 +29,7 @@ public interface LocationDAO {
     public void suprimerTous_Location();
 
     @Query("SELECT * FROM Table_location where id_location like :id_location")
-    public Location[] getLocation(int id_location);*/
+    public Location[] getLocation(int id_location);
 
 
 

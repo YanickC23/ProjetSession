@@ -8,19 +8,22 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 import java.util.Objects;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 
 @Entity(tableName = "Table_voiture_location",
         indices = {@Index("id_location"), @Index("id_voiture")},
+        primaryKeys = {"id_voiture", "id_location"},
         foreignKeys = {@ForeignKey(entity = Voiture.class,
                                             parentColumns = "id_voiture",
-                                            childColumns = "id_voiture"),
+                                            childColumns = "id_voiture",
+                                            onDelete = CASCADE),
                         @ForeignKey(entity = Location.class,
                                              parentColumns = "id_location",
-                                             childColumns = "id_location")}
+                                             childColumns = "id_location",
+                                             onDelete = CASCADE)}
 )
 
 public class Voiture_Location {

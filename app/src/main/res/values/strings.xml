@@ -66,11 +66,11 @@
     -->
 
     <string name="QuiSommeNous">Notre service consiste à concilier les
-        besoins de la population à utiliser un véhicule sans devoir le posséder,
-        ainsi que les besoins des propriétaires de véhicule de rentabiliser leurs
-        investissement en l\'offrant à la location lorsqu\'ils ne s\'en servent pas. </string>
+        besoins des gens d\'utiliser un véhicule sans devoir le posséder
+        ainsi que les besoins des propriétaires de véhicule de rentabiliser leur
+        investissement en offrant leur véhicule à la location.</string>
 
-    <string name="Accueil_Louer">Louer votre véhicule Vous
+    <string name="Accueil_Louer">Offrir votre véhicule Vous
         posséder un ou plusieurs véhicules? Vous souhaiter
         en rentabiliser l\'acquisition?
         Offrez-le à la location, les autres clients profiterons
@@ -81,16 +81,38 @@
     <string name="Accueil_MettreLocation">Louer un véhicule Vous ne posséder pas
         de véhicule? Vous avez besoin d\'un type particuler de véhicule?
         Venez voir nos offres. Notre flotte comporte une gamme étendue
-        de choix qui saura répondre à tous vos besoin, quels qu\'il soient. </string>
+        de choix qui sauront répondre à tous vos besoin, quels qu\'il soient. </string>
+
+    <string name="Accueil_Entrer">N\'hésitez plus, entrer sans
+        tarder sur notre site, que se sois pour louer un véhicule, ou offrir le vôtre à la
+        location, vous y découvrirez plusieur possibilités.</string>
 
 
     <string name="LoremIpsum">Lorem ipsum dolor sit amet,
         consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.  </string>
+       </string>
+
+    <string name="Accueil_1">Véhicules de Promenade:
+        Que se soit pour une berline, une compacte, minifourgonnete ou multisegment,
+        nous disposons du véhicule que vous recherchez.
+       </string>
+
+    <string name="Accueil_2">Véhicules Utilitaire:
+       Vous avez besoin d\'un VUS, d\'un 4X4, d\'un pickup?
+       Nous avons une vaste gamme de choix.
+       </string>
+    <string name="Accueil_3">Véhicules Électrique:
+        Vous êtes préoccupé par l\'environnement? Vous souhaiter un véhicule zéro émission?
+        Ce véhicule est disponible dans notre flotte.
+       </string>
+
+
+    <string name="Accueil_tel">Téléphone: (819) 555-3636</string>
+    <string name="Accueil_courriel">Courriel: locationexpress@gmail.qc.ca</string>
+    <string name="Accueil_adresse">Adresse: 3500, rue de Courval, C.P. 97, G9A 5E6 </string>
+    <string name="Accueil_reseauxSociaux">Réseaux sociaux </string>
+
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
