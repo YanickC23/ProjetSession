@@ -41,8 +41,8 @@ public class Voiture {
     String categorie;
     @SerializedName("statutDisponible")
     boolean statutDisponible;
-    @SerializedName("description")
-    String description;
+    @SerializedName("descript")
+    String descript;
     @SerializedName("tarifJourn")
     Double tarifJourn;
     @SerializedName("proprio")
@@ -58,7 +58,7 @@ public class Voiture {
         this.annee = _Annee;
         this.prix = _Prix;
         this.statutDisponible = _StatutDispo;
-        this.description = _Description;
+        this.descript = _Description;
         this.tarifJourn = _TarifJournalier;
         this.categorie = _Categorie;
         this.proprio = _Proprio;
@@ -136,12 +136,12 @@ public class Voiture {
         this.statutDisponible = statutDisponible;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescript() {
+        return descript;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescript(String descript) {
+        this.descript = descript;
     }
 
     public Double getTarifJourn() {
@@ -176,7 +176,7 @@ public class Voiture {
                 ", prix=" + prix +
                 ", categorie='" + categorie + '\'' +
                 ", statutDisponible=" + statutDisponible +
-                ", description='" + description + '\'' +
+                ", descript='" + descript + '\'' +
                 ", tarifJourn=" + tarifJourn +
                 ", proprio=" + proprio +
                 '}';
@@ -194,14 +194,14 @@ public class Voiture {
                 annee.equals(voiture.annee) &&
                 prix.equals(voiture.prix) &&
                 categorie.equals(voiture.categorie) &&
-                description.equals(voiture.description) &&
+                descript.equals(voiture.descript) &&
                 tarifJourn.equals(voiture.tarifJourn) &&
                 Objects.equals(proprio, voiture.proprio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_voiture, marque, modele, annee, prix, categorie, statutDisponible, description, tarifJourn, proprio);
+        return Objects.hash(id_voiture, marque, modele, annee, prix, categorie, statutDisponible, descript, tarifJourn, proprio);
     }
 
 }

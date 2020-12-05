@@ -125,7 +125,7 @@ public class Singleton {
         listeVoitures.get(index).setAnnee(_Annee);
         listeVoitures.get(index).setPrix(_Prix);
         listeVoitures.get(index).setStatutDisponible(_StatutDispo);
-        listeVoitures.get(index).setDescription(_Description);
+        listeVoitures.get(index).setDescript(_Description);
         listeVoitures.get(index).setTarifJourn(_TarifJournalier);
         listeVoitures.get(index).setCategorie(_Categorie);
 
@@ -166,7 +166,7 @@ public class Singleton {
     }
 
     public String Obt_DescriptionVoiture(int index){
-        return listeVoitures.get(index).getDescription();
+        return listeVoitures.get(index).getDescript();
     }
     public double Obt_TarifJournVoiture(int index){
         return listeVoitures.get(index).getTarifJourn();

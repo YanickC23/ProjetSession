@@ -1,7 +1,6 @@
 package com.example.projetsession.Voitures;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -136,7 +135,7 @@ public class AjoutVoiture extends Fragment {
         voiture.setCategorie(categorie);
         voiture.setAnnee(annee);
         voiture.setPrix(prix);
-        voiture.setDescription(description);
+        voiture.setDescript(description);
         voiture.setStatutDisponible(statutDispo);
         voiture.setTarifJourn(tarifJournalier);
 
