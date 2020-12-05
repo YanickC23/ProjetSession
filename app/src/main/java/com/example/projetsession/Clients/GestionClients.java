@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
@@ -75,8 +76,8 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         bottomNavClient.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
-
-
+                Intent intentGestVoit = new Intent(getApplicationContext(), GestionVoitures.class);
+                Intent intentGestLocation = new Intent(getApplicationContext(), GestionLocation.class);
 
                 switch (menuItem.getItemId()){
 
@@ -93,9 +94,18 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
                         return true;
 
                     case R.id.mnOffrirLocation:
-                        Intent intent = new Intent(getApplicationContext(), GestionVoitures.class);
-                        intent.putExtra("FragmentDemande", "OffrirLocation");
-                        startActivity(intent);
+                        intentGestVoit.putExtra("FragmentDemande", "OffrirLocation");
+                        startActivity(intentGestVoit);
+                        return true;
+
+                    case R.id.mnMesAuto:
+                        intentGestVoit.putExtra("FragmentDemande", "ListeMesVoitures");
+                        startActivity(intentGestVoit);
+                        return true;
+
+                    case R.id.mnLouer:
+                        intentGestLocation.putExtra("FragmentDemande", "RechercheVoiture");
+                        startActivity(intentGestLocation);
                         return true;
 
                 }

@@ -14,6 +14,10 @@
         android:icon="@drawable/icone_profil"
         android:title="Mon Profil" />
     <item
+        android:id="@+id/mnLouer"
+        android:icon="@drawable/icone_louer"
+        android:title="Louer un Véhicule" />
+    <item
         android:id="@+id/mnListeClient"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="ListeClient" />

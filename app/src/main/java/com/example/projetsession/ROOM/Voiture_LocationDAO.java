@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
-import com.example.projetsession.Objets.Client_Voiture;
 import com.example.projetsession.Objets.Location;
 import com.example.projetsession.Objets.Voiture_Location;
 
@@ -26,6 +25,7 @@ public interface Voiture_LocationDAO {
     @Delete
     public void supprimerVoiture_Location(Location location);
 
+    /*
     @Transaction
     @Query("SELECT * FROM Table_voiture")
     public List<Voiture_Location> getListeVoitureEnLocation();
@@ -33,6 +33,6 @@ public interface Voiture_LocationDAO {
     @Transaction
     @Query("SELECT * FROM Table_location")
     public List<Voiture_Location> getListeLocationsPourUneVoiture();
-
+*/
 
 }

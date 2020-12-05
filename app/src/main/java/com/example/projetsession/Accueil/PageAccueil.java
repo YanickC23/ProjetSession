@@ -2,8 +2,6 @@ package com.example.projetsession.Accueil;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,12 +18,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.projetsession.Clients.CreationCompte;
 import com.example.projetsession.Clients.GestionClients;
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.R;
-import com.example.projetsession.Voitures.FicheVoiture;
 
 public class PageAccueil extends Fragment  {
 
@@ -35,6 +31,7 @@ public class PageAccueil extends Fragment  {
 
     InterfacePageAccueil interfacePageAccueil;
     Spinner spinner;
+    Button btnAcces;
 
     public PageAccueil() {
         // Required empty public constructor
@@ -55,6 +52,7 @@ public class PageAccueil extends Fragment  {
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_page_accueil, container, false);
+
     }
 
     @Override
@@ -62,6 +60,11 @@ public class PageAccueil extends Fragment  {
 
         spinner = view.findViewById(R.id.spnConnectInscr);
         login = new Login();
+
+
+
+
+
 
         ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this.getContext(),
                                                 R.array.SpinnerChoix, android.R.layout.simple_spinner_dropdown_item);
@@ -77,7 +80,7 @@ public class PageAccueil extends Fragment  {
                     case "Me Connecter":
                         fragmentManager = ((AppCompatActivity)view.getContext()).getSupportFragmentManager();
                         fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.add(R.id.Fl_FragAccueil, login);
+                        fragmentTransaction.add(R.id.flFragAccueil, login);
                         fragmentTransaction.commit();
                         break;
 
@@ -89,14 +92,27 @@ public class PageAccueil extends Fragment  {
                 }
             }
 
+
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 // TODO Auto-generated method stub
             }
         });
 
-    }
 
+        btnAcces = view.findViewById(R.id.btnAcces);
+        btnAcces.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), GestionLocation.class);
+                intent.putExtra("FragmentDemande", "ListeVoiture");
+                startActivity(intent);
+            }
+        });
+
+
+    }
 
 
 

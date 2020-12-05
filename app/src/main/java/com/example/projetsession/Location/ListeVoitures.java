@@ -51,12 +51,12 @@ public class ListeVoitures extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_liste_voitures, container, false);
 
-        recyclerView = view.findViewById(R.id.rvLocation);
+      /*  recyclerView = view.findViewById(R.id.rvLocation);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new Adapter_Voitures(interfaceListe_locationVoiture.CreerListeLocationVoitures());
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
         return view;
     }

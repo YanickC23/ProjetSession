@@ -38,6 +38,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_client_connecte" />
+        app:menu="@menu/menu_profil_client" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

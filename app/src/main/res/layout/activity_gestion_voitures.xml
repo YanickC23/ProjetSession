@@ -21,8 +21,24 @@
         android:id="@+id/rvMesVoitures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvVoitures"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/couleurTexteBouton"
+        app:itemTextColor="@color/couleurTexteBouton"
+        app:layout_constraintBottom_toBottomOf="@+id/flFrag_GestVoiture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_location" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

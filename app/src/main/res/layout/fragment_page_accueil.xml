@@ -221,6 +221,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="40dp"
+                android:clickable="true"
                 app:cardBackgroundColor="@color/couleurBouton"
                 app:cardCornerRadius="20dp">
 
@@ -233,6 +234,17 @@
                     android:textColor="@color/couleurTexteBouton"
                     android:textSize="18sp" />
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnAcces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_acces"
+                android:text="@string/Accueil_Acceder"
+                android:textColor="@color/couleurTexteBouton"
+                android:textSize="24sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
