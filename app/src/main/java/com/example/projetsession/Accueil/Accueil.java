@@ -6,10 +6,22 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.projetsession.Location.Adapter_Toute_Voiture;
+import com.example.projetsession.Objets.Image;
+import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
+import com.example.projetsession.retrofit.InterfaceServeur;
+import com.example.projetsession.retrofit.RetrofitInstance;
 
-public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class Accueil extends AppCompatActivity implements Login.InterfaceLogin {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -17,10 +29,13 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
     Login fragLogin;
     PageAccueil fragPageAccueil;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
 
         fragPageAccueil = new PageAccueil();
         fragLogin = new Login();
@@ -31,22 +46,21 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
         fragmentTransaction.commit();
 
 
-
         Intent intent = getIntent();
         String extraFragment;
 
-        if(intent.hasExtra("FragmentDemande")){
+        if (intent.hasExtra("FragmentDemande")) {
 
             extraFragment = intent.getStringExtra("FragmentDemande");
 
-            if(extraFragment.equals("PageAccueil")){
+            if (extraFragment.equals("PageAccueil")) {
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.flFragAccueil, fragPageAccueil);
                 fragmentTransaction.commit();
             }
 
-            if(extraFragment.equals("PageLogin")){
+            if (extraFragment.equals("PageLogin")) {
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.flFragAccueil, fragLogin);
@@ -55,21 +69,11 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
         }
 
 
-
-
-
-
-
-
     }
 
 
-
-
-   public String ValiderConnexion(String identifiant, String motDePasse){
+    public String ValiderConnexion(String identifiant, String motDePasse) {
         return "Valide";
-   }
-
-
+    }
 
 }

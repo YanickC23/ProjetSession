@@ -14,8 +14,12 @@ import retrofit2.http.POST;
 
 public interface InterfaceServeur {
 
+
     @GET("load_image.php")
     Call<List<Image>> getAllImage();
+
+    @GET("load_voiture.php")
+    Call<List<Voiture>> getAllVoiture();
 
     @GET("/donnees")
     Call<List<Client>> getAllClientFromServer();

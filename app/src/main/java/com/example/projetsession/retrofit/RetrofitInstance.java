@@ -1,5 +1,8 @@
 package com.example.projetsession.retrofit;
 
+import com.example.projetsession.Objets.Image;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,4 +22,5 @@ public class RetrofitInstance {
 
         return retrofit;
     }
+
 }

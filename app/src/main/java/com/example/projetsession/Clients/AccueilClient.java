@@ -16,11 +16,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.projetsession.Location.GestionLocation;
+import com.example.projetsession.Objets.Image;
+import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Voitures.GestionVoitures;
 import com.example.projetsession.Voitures.Liste_MesVoitures;
+import com.example.projetsession.retrofit.InterfaceServeur;
+import com.example.projetsession.retrofit.RetrofitInstance;
+
+import java.util.List;
+
+
 
 
 public class AccueilClient extends Fragment {
@@ -43,6 +52,7 @@ public class AccueilClient extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
 

@@ -42,8 +42,8 @@ public class Voiture implements Serializable {
     @SerializedName("annee")
     Integer annee;
     @Expose
-    @SerializedName("prix")
-    Double prix;
+    @SerializedName("valeur")
+    Double valeur;
     @Expose
     @SerializedName("categorie")
     String categorie;
@@ -54,26 +54,30 @@ public class Voiture implements Serializable {
     @SerializedName("description")
     String description;
     @Expose
-    @SerializedName("tarifJourn")
-    Double tarifJourn;
+    @SerializedName("tarif")
+    Double tarif;
     @Expose
     @SerializedName("proprio")
     Integer proprio;
+    @Expose
+    @SerializedName("path")
+    public String path;
 
     public Voiture(int _Id_voiture, String _Marque, String _Modele, Integer _Annee,
                    Double _Prix, boolean _StatutDispo, String _Description,
-                        Double _TarifJournalier, String _Categorie, Integer _Proprio) {
+                        Double _TarifJournalier, String _Categorie, Integer _Proprio, String path) {
 
         this.id_voiture = _Id_voiture;
         this.marque = _Marque;
         this.modele = _Modele;
         this.annee = _Annee;
-        this.prix = _Prix;
+        this.valeur = _Prix;
         this.statutDisponible = _StatutDispo;
         this.description = _Description;
-        this.tarifJourn = _TarifJournalier;
+        this.tarif = _TarifJournalier;
         this.categorie = _Categorie;
         this.proprio = _Proprio;
+        this.path = path;
     }
 
 
@@ -121,12 +125,12 @@ public class Voiture implements Serializable {
         this.annee = annee;
     }
 
-    public Double getPrix() {
-        return prix;
+    public Double getValeur() {
+        return valeur;
     }
 
-    public void setPrix(Double prix) {
-        this.prix = prix;
+    public void setValeur(Double valeur) {
+        this.valeur = valeur;
     }
 
     public boolean isStatutDisponible() {
@@ -156,12 +160,12 @@ public class Voiture implements Serializable {
         this.description = description;
     }
 
-    public Double getTarifJourn() {
-        return tarifJourn;
+    public Double getTarif() {
+        return tarif;
     }
 
-    public void setTarifJourn(Double tarifJourn) {
-        this.tarifJourn = tarifJourn;
+    public void setTarif(Double tarif) {
+        this.tarif = tarif;
     }
 
 
@@ -178,6 +182,15 @@ public class Voiture implements Serializable {
         this.proprio = proprio;
     }
 
+    //pour les photos
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     @Override
     public String toString() {
         return "Voiture{" +
@@ -185,11 +198,11 @@ public class Voiture implements Serializable {
                 ", marque='" + marque + '\'' +
                 ", modele='" + modele + '\'' +
                 ", annee=" + annee +
-                ", prix=" + prix +
+                ", prix=" + valeur +
                 ", categorie='" + categorie + '\'' +
                 ", statutDisponible=" + statutDisponible +
                 ", description='" + description + '\'' +
-                ", tarifJourn=" + tarifJourn +
+                ", tarifJourn=" + tarif +
                 ", proprio=" + proprio +
                 '}';
     }
@@ -204,16 +217,16 @@ public class Voiture implements Serializable {
                 marque.equals(voiture.marque) &&
                 modele.equals(voiture.modele) &&
                 annee.equals(voiture.annee) &&
-                prix.equals(voiture.prix) &&
+                valeur.equals(voiture.valeur) &&
                 categorie.equals(voiture.categorie) &&
                 description.equals(voiture.description) &&
-                tarifJourn.equals(voiture.tarifJourn) &&
+                tarif.equals(voiture.tarif) &&
                 Objects.equals(proprio, voiture.proprio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_voiture, marque, modele, annee, prix, categorie, statutDisponible, description, tarifJourn, proprio);
+        return Objects.hash(id_voiture, marque, modele, annee, valeur, categorie, statutDisponible, description, tarif, proprio);
     }
 
 }

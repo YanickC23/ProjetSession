@@ -1,0 +1,52 @@
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/maps"
+    android:name="com.google.android.gms.maps.MapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tool:context=".MapsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="end|bottom"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/zoomout"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:alpha="0.95"
+            android:background="@android:color/white"
+            android:color="#FFFFFF"
+            android:onClick="onZoom"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zoominn" />
+
+        <Button
+            android:id="@+id/zoominn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.95"
+            android:background="@android:color/white"
+            android:color="#FFFFFF"
+            android:onClick="onZoom"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/zoomout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</fragment>
