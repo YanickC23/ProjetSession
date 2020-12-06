@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnAccueil"
+        android:icon="@drawable/icone_accueil"
+        android:title="Accueil" />
+    <item
+        android:id="@+id/mnMeConnecter"
+        android:icon="@drawable/icone_login"
+        android:title="Me Connecter" />
+    <item
+        android:id="@+id/mnRechVehicule"
+        android:icon="@drawable/icone_recherche"
+        android:title="Rechercher un Véhicule" />
+    <item
+        android:id="@+id/mnListeVehicule"
+        android:icon="@drawable/icone_liste"
+        android:title="Liste des Véhicules" />
+</menu>
