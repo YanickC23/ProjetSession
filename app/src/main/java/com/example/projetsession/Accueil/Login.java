@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.projetsession.Clients.GestionClients;
 import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.R;
+import com.example.projetsession.Validations;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class Login extends Fragment {
@@ -27,8 +29,10 @@ public class Login extends Fragment {
     EditText edxIdentifiant, edxMotDePasse;
     String identifiant, motDePasse;
     Button btnConnection, btnCreationCompte;
-
+    BottomNavigationView bottomNavAccueil;
     String connect;
+    Validations validations;
+
 
     public Login() {
         // Required empty public constructor
@@ -36,6 +40,8 @@ public class Login extends Fragment {
 
     public interface InterfaceLogin{
         String ValiderConnexion(String identifiant, String motDePasse);
+        void AfficherBarreNav();
+        void ChangerMenu_ProfilClient();
     }
 
     @Override
@@ -66,6 +72,9 @@ public class Login extends Fragment {
         btnConnection = view.findViewById(R.id.btnLogin_Connexion);
         btnCreationCompte = view.findViewById(R.id.btnCreerCompte);
 
+        interfaceLogin.AfficherBarreNav();
+        interfaceLogin.ChangerMenu_ProfilClient();
+        validations = new Validations();
 
         btnConnection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,19 +82,34 @@ public class Login extends Fragment {
                 identifiant = edxIdentifiant.getText().toString();
                 motDePasse = edxMotDePasse.getText().toString();
 
-                connect =  interfaceLogin.ValiderConnexion(identifiant, motDePasse);
+                boolean valideIdentifiant=true;
+                boolean valideMDP=true;
 
 
-                if(connect.equals("Valide")== true){
-                    Intent intent = new Intent(view.getContext(), GestionClients.class);
-                    intent.putExtra("FragmentDemande", "AccueilClient");
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(view.getContext(), "Le Mot de Passe n'est pas Valide.\n Accès Refusé. ", Toast.LENGTH_LONG).show();
+                valideIdentifiant = validations.Validation_Email(edxIdentifiant);
+                valideMDP = validations.Validation_MotDePasse(edxMotDePasse);
+
+                 valideIdentifiant=true;
+                 valideMDP=true;
+
+                if((valideIdentifiant==true)&&(valideMDP==true)) {
+                    connect = interfaceLogin.ValiderConnexion(identifiant, motDePasse);
+
+                    if(connect.equals("Valide")== true){
+                        Intent intent = new Intent(view.getContext(), GestionClients.class);
+                        intent.putExtra("FragmentDemande", "AccueilClient");
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(view.getContext(), "Le Mot de Passe n'est pas Valide.\n Accès Refusé. ", Toast.LENGTH_LONG).show();
+                    }
+                    edxIdentifiant.setText("");
+                    edxMotDePasse.setText("");
+                }
+                else{
+                    Toast.makeText(view.getContext(), "Certains champs ne sont pas valides. ", Toast.LENGTH_LONG).show();
                 }
 
-                edxIdentifiant.setText("");
-                edxMotDePasse.setText("");
+
             }
         });
 

@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.example.projetsession.Accueil.Accueil;
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
@@ -96,24 +98,35 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
 
+        Intent intentGestVoit = new Intent(getApplicationContext(), GestionVoitures.class);
+        Intent intentGestLocation = new Intent(getApplicationContext(), GestionLocation.class);
+        Intent intentAccueil = new Intent(getApplicationContext(), Accueil.class);
+
         switch (menuItem.getItemId()){
 
-
-            case R.id.mnAjoutVoiture:
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragAjoutVoiture);
-                fragmentTransaction.commit();
+            case R.id.mnAccueil:
+                intentAccueil.putExtra("FragmentDemande", "PageAccueil");
+                startActivity(intentAccueil);
                 return true;
 
-            case R.id.mnListeVoiture:
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragListeMesVoitures);
-                fragmentTransaction.commit();
+            case R.id.mnMeConnecter:
+                intentAccueil.putExtra("FragmentDemande", "PageLogin");
+                startActivity(intentAccueil);
+                return true;
+
+            case R.id.mnRechVehicule:
+                intentGestLocation.putExtra("FragmentDemande", "RechercheVoiture");
+                startActivity(intentGestLocation);
+                return true;
+
+            case R.id.mnListeVehicule:
+                intentGestLocation.putExtra("FragmentDemande", "ListeVoiture");
+                startActivity(intentGestLocation);
                 return true;
 
 
 
-                default:
+            default:
                     return super.onOptionsItemSelected(menuItem);
         }
     }

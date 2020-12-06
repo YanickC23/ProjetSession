@@ -14,7 +14,7 @@
     <string name="hintModeleVoiture">ex: Matrix</string>
     <string name="hintAnneeVoiture">ex: 2012</string>
     <string name="hintPrixVoiture">ex: 12 000$</string>
-    <string name="hintDescriptionVoiture">Une brève description de la voiture</string>
+    <string name="hintDescriptionVoiture">Une brève descript de la voiture</string>
     <string name="hintTarifVoiture">Votre tarif, ex: 86.00$/Jour</string>
     <string name="hintCategorieVoiture">La catégorie de la voiture</string>
     <string name="btnEnregistrer">Enregistrer</string>
@@ -36,6 +36,9 @@
     <string name="hintmdp_2_Client">**********</string>
     <string name="hintNoPermisClient">M1111-010100-01</string>
     <string name="hintNoCarteCreditClient">1111 1111 1111 1111</string>
+
+    <string name="hintLoginEmail">Votre adresse courriel</string>
+    <string name="hintLoginmotDePasse">Votre Mot de Passe</string>
 
     <string name="BienvClient_1">Bonjour cher client</string>
     <string name="BienvClient_2">Bienvenue chez notreEntreprise. Que soit pour louer un véhicule ou mettre un véhicule en location,

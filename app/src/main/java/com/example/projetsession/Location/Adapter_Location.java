@@ -1,5 +1,4 @@
-package com.example.projetsession.Voitures;
-
+package com.example.projetsession.Location;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,13 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
-
+import com.example.projetsession.Voitures.Adapter_Voitures;
+import com.example.projetsession.Voitures.FicheVoiture;
 
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonViewHolder> {
+public class Adapter_Location extends RecyclerView.Adapter<Adapter_Location.MonViewHolder>{
 
     FicheVoiture fragFicheVoiture;
     private List<Voiture> listeVoitures;
@@ -37,7 +36,7 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
 
 
 
-    public Adapter_Voitures(List<Voiture>list){
+    public Adapter_Location(List<Voiture>list){
 
         this.listeVoitures = list;
     }
@@ -46,18 +45,18 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
 
     @NonNull
     @Override
-    public MonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public Adapter_Location.MonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.fragment_liste__mes_voitures, parent, false);
         Context context = view.getContext();
         builder = new AlertDialog.Builder(context);
-        return new MonViewHolder(view);
+        return new Adapter_Location.MonViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(@NonNull MonViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull Adapter_Location.MonViewHolder holder, int position){
 
         holder.tvMarqueModele.setText(Singleton.getInstance().Obt_MarqueModele(position).toString());
         holder.tvAnnee.setText(Integer.toString(Singleton.getInstance().Obt_AnneeVoiture(position)));
@@ -123,6 +122,8 @@ public class Adapter_Voitures extends RecyclerView.Adapter<Adapter_Voitures.MonV
 
         }
     }
+
+
 
 
 }

@@ -1,5 +1,5 @@
 package com.example.projetsession;
-//aaaa test
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
         if(verifierPermissions())
         {
             lancerProgramme();
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         liste = new ArrayList<Client>();
+
+
         //remplirListe();
         //getUtilisateur();
         //getUtilisateurById();

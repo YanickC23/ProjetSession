@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import com.example.projetsession.Clients.GestionClients;
 import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PageAccueil extends Fragment  {
 
@@ -29,17 +30,29 @@ public class PageAccueil extends Fragment  {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
+
     InterfacePageAccueil interfacePageAccueil;
     Spinner spinner;
     Button btnAcces;
+    BottomNavigationView bottomNavAccueil;
 
     public PageAccueil() {
         // Required empty public constructor
     }
 
     public interface InterfacePageAccueil{
+            void CacherBarreNav();
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+          interfacePageAccueil = (InterfacePageAccueil) context;
 
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +64,7 @@ public class PageAccueil extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         return inflater.inflate(R.layout.fragment_page_accueil, container, false);
 
     }
@@ -58,13 +72,12 @@ public class PageAccueil extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
 
+
+
         spinner = view.findViewById(R.id.spnConnectInscr);
         login = new Login();
 
-
-
-
-
+        interfacePageAccueil.CacherBarreNav();
 
         ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this.getContext(),
                                                 R.array.SpinnerChoix, android.R.layout.simple_spinner_dropdown_item);
@@ -112,17 +125,15 @@ public class PageAccueil extends Fragment  {
         });
 
 
+
+
+
     }
 
 
 
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        interfacePageAccueil = (InterfacePageAccueil) context;
-    }
 
 
 }
