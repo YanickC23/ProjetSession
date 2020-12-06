@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.R;
+import com.example.projetsession.Validations;
 
 
 public class CreationCompte extends Fragment {
@@ -29,6 +31,7 @@ public class CreationCompte extends Fragment {
             motDePasse, noPermis, carteCredit;
 
     Button btnEnr;
+    Validations validations;
 
     public CreationCompte() {
         // Required empty public constructor
@@ -56,8 +59,6 @@ public class CreationCompte extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-
-
         edxNom = view.findViewById(R.id.edxNom);
         edxPrenom = view.findViewById(R.id.edxPrenom);
         edxNoTel = view.findViewById(R.id.edxNotel);
@@ -67,10 +68,30 @@ public class CreationCompte extends Fragment {
         edxCarteCredit = view.findViewById(R.id.edxCredit);
         btnEnr = view.findViewById(R.id.btnEnrClient);
 
+        validations = new Validations();
 
             btnEnr.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    boolean valideNom=true;
+                    boolean validePrenom=true;
+                    boolean valideTel=true;
+                    boolean valideEmail=true;
+                    boolean valideMDP=true;
+                    boolean validePermis=true;
+                    boolean valideCarteCredit=true;
+
+                    valideNom = validations.Validation_String(edxNom);
+                    validePrenom = validations.Validation_String(edxPrenom);
+                    valideTel = validations.Validation_Telephone(edxNoTel);
+                    valideEmail = validations.Validation_Email(edxEmail);
+                    valideMDP = validations.Validation_MotDePasse(edxMotDePasse);
+                    validePermis = validations.Validation_AlphaNumerique(edxNoPermis);
+                    valideCarteCredit = validations.Validation_AlphaNumerique(edxCarteCredit);
+
+                    if((valideNom==true)&&(validePrenom==true)&&(valideTel==true)
+                            &&(valideEmail==true)&&(valideMDP==true)&&(validePermis==true) &&(valideCarteCredit==true)){
 
                     nom = edxNom.getText().toString();
                     prenom = edxPrenom.getText().toString();
@@ -80,7 +101,8 @@ public class CreationCompte extends Fragment {
                     noPermis = edxNoPermis.getText().toString();
                     carteCredit = edxCarteCredit.getText().toString();
 
-                    interfaceCreationCompte.CreerCompteClient(CreationCompte(nom, prenom, noTel, email, motDePasse, noPermis, carteCredit));
+
+                   interfaceCreationCompte.CreerCompteClient(CreationCompte(nom, prenom, noTel, email, motDePasse, noPermis, carteCredit));
 
                     edxNom.setText("");
                     edxPrenom.setText("");
@@ -89,6 +111,14 @@ public class CreationCompte extends Fragment {
                     edxMotDePasse.setText("");
                     edxNoPermis.setText("");
                     edxCarteCredit.setText("");
+                    }
+                    else{
+                        Toast.makeText(view.getContext(), "Certains champs ne sont pas valides. ", Toast.LENGTH_LONG).show();
+                    }
+
+
+
+
                 }
             });
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.projetsession.Location.GestionLocation;
@@ -17,7 +18,7 @@ import com.example.projetsession.R;
 import com.example.projetsession.Voitures.GestionVoitures;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
+public class Accueil extends AppCompatActivity implements Login.InterfaceLogin, PageAccueil.InterfacePageAccueil{
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -39,6 +40,8 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
         fragmentTransaction.add(R.id.flFragAccueil, fragPageAccueil);
         fragmentTransaction.commit();
         bottomNavAccueil = findViewById(R.id.bnvAccueil);
+
+
 
 
         Intent intent = getIntent();
@@ -105,8 +108,6 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
         });
 
 
-
-
     }
 
 /*
@@ -168,5 +169,20 @@ public class Accueil extends AppCompatActivity implements Login.InterfaceLogin{
    }
 
 
+    public void CacherBarreNav(){
+        bottomNavAccueil = findViewById(R.id.bnvAccueil);
+        bottomNavAccueil.setVisibility(View.INVISIBLE);
+    }
+
+    public void AfficherBarreNav(){
+        bottomNavAccueil = findViewById(R.id.bnvAccueil);
+        bottomNavAccueil.setVisibility(View.VISIBLE);
+    }
+
+    public void ChangerMenu_ProfilClient(){
+        bottomNavAccueil = findViewById(R.id.bnvAccueil);
+        bottomNavAccueil.getMenu().clear();
+        bottomNavAccueil.inflateMenu(R.menu.menu_profil_client);
+    }
 
 }

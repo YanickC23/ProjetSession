@@ -48,18 +48,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/hintLoginEmail"
             android:inputType="textPersonName"
-            android:text="@string/Login_Email"
-            android:textColor="@color/couleurTexteBouton" />
+            android:textAlignment="textStart"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
         <EditText
             android:id="@+id/txtLogin_MotDePasse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/hintLoginmotDePasse"
             android:inputType="textPersonName"
-            android:text="@string/Login_MotdePasse"
-            android:textColor="@color/couleurTexteBouton" />
+            android:textAlignment="textStart"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
         <Button
             android:id="@+id/btnLogin_Connexion"
