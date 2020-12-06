@@ -7,7 +7,7 @@
     tools:context=".Accueil.Accueil">
 
     <FrameLayout
-        android:id="@+id/Fl_FragAccueil"
+        android:id="@+id/flFragAccueil"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,4 +16,5 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

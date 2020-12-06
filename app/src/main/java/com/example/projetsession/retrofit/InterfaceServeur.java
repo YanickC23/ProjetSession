@@ -1,6 +1,7 @@
 package com.example.projetsession.retrofit;
 
 import com.example.projetsession.Objets.Client;
+import com.example.projetsession.Objets.Image;
 import com.example.projetsession.Objets.Voiture;
 
 import java.util.List;
@@ -12,6 +13,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface InterfaceServeur {
+
+    @GET("load_image.php")
+    Call<List<Image>> getAllImage();
 
     @GET("/donnees")
     Call<List<Client>> getAllClientFromServer();

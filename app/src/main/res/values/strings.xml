@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjetSession</string>
+    <string name="app_name">Location express</string>
     <string name="app_comp_name">Location express</string>
 
     <string name="TitreMettreVoitureLocation">Mettre ma voiture en location</string>
@@ -26,12 +26,16 @@
     <string name="EmailClient">Courriel</string>
     <string name="mdp_1_Client">Mot de Passe</string>
     <string name="mdp_2_Client">Répéter MDP</string>
+    <string name="noPermisClient">Permis Conduire</string>
+    <string name="carteCreditClient">Carte de Crédit</string>
     <string name="hintNomClient">Votre Nom de famille</string>
     <string name="hintPrenomClient">Votre prénom</string>
     <string name="hintNotelClient">ex: 819-555-4545</string>
     <string name="hintEmailClient">ex: monnom@xyz.ca</string>
     <string name="hintmdp_1_Client">ex:hr3U?h24Etl</string>
     <string name="hintmdp_2_Client">**********</string>
+    <string name="hintNoPermisClient">M1111-010100-01</string>
+    <string name="hintNoCarteCreditClient">1111 1111 1111 1111</string>
 
     <string name="BienvClient_1">Bonjour cher client</string>
     <string name="BienvClient_2">Bienvenue chez notreEntreprise. Que soit pour louer un véhicule ou mettre un véhicule en location,
@@ -41,16 +45,32 @@
     <string name="BienvClient_BtnLouer">Louer une Voiture</string>
 
 
+    <string name="Login_CreerCompte">Créer un Compte</string>
+    <string name="Login_Connexion">Connexion</string>
+    <string name="Login_Email">Adresse Courriel</string>
+    <string name="Login_MotdePasse">Mot de Passe</string>
+
+
+    <string name="rechercheParCategorie">Recherche Par Catégorie:</string>
+    <string name="hintRechercheParMarque">Recherche Par Marque:</string>
+    <string name="hintRechercheParModele">Recherche Par Modèle:</string>
+    <string name="hintRechercheParDate">Recherche Par Date:</string>
+    <string name="hintDateSup">Et le</string>
+    <string name="hintDateInf">Date Entre le</string>
+    <string name="hintTarifSup">Et Supérieur à</string>
+    <string name="hintTarifInf">Tarif Inférieur à</string>
+
+
     <!--
         Textes long utilisé dans les layouts
     -->
 
     <string name="QuiSommeNous">Notre service consiste à concilier les
-        besoins de la population à utiliser un véhicule sans devoir le posséder,
-        ainsi que les besoins des propriétaires de véhicule de rentabiliser leurs
-        investissement en l\'offrant à la location lorsqu\'ils ne s\'en servent pas. </string>
+        besoins des gens d\'utiliser un véhicule sans devoir le posséder
+        ainsi que les besoins des propriétaires de véhicule de rentabiliser leur
+        investissement en offrant leur véhicule à la location.</string>
 
-    <string name="Accueil_Louer">Louer votre véhicule Vous
+    <string name="Accueil_Louer">Offrir votre véhicule Vous
         posséder un ou plusieurs véhicules? Vous souhaiter
         en rentabiliser l\'acquisition?
         Offrez-le à la location, les autres clients profiterons
@@ -61,18 +81,64 @@
     <string name="Accueil_MettreLocation">Louer un véhicule Vous ne posséder pas
         de véhicule? Vous avez besoin d\'un type particuler de véhicule?
         Venez voir nos offres. Notre flotte comporte une gamme étendue
-        de choix qui saura répondre à tous vos besoin, quels qu\'il soient. </string>
+        de choix qui sauront répondre à tous vos besoin, quels qu\'il soient. </string>
 
+    <string name="Accueil_Entrer">N\'hésitez plus, entrer sans
+        tarder sur notre site, que se sois pour louer un véhicule, ou offrir le vôtre à la
+        location, vous y découvrirez plusieur possibilités.</string>
 
+    <string name="Accueil_Acceder">Accédez à la liste des véhicules disponible.</string>
 
     <string name="LoremIpsum">Lorem ipsum dolor sit amet,
         consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.  </string>
+       </string>
+
+    <string name="Accueil_1">Véhicules de Promenade:
+        Que se soit pour une berline, une compacte, minifourgonnete ou multisegment,
+        nous disposons du véhicule que vous recherchez.
+       </string>
+
+    <string name="Accueil_2">Véhicules Utilitaire:
+       Vous avez besoin d\'un VUS, d\'un 4X4, d\'un pickup?
+       Nous avons une vaste gamme de choix.
+       </string>
+    <string name="Accueil_3">Véhicules Électrique:
+        Vous êtes préoccupé par l\'environnement? Vous souhaiter un véhicule zéro émission?
+        Ce véhicule est disponible dans notre flotte.
+       </string>
+
+
+    <string name="Accueil_tel">Téléphone: (819) 555-3636</string>
+    <string name="Accueil_courriel">Courriel: locationexpress@gmail.qc.ca</string>
+    <string name="Accueil_adresse">Adresse: 3500, rue de Courval, C.P. 97, G9A 5E6 </string>
+    <string name="Accueil_reseauxSociaux">Réseaux sociaux </string>
+
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="SpinnerChoixTitre">Bienvenue</string>
+    <string-array name="SpinnerChoix">
+        <item>Bienvenue</item>
+        <item>Me Connecter</item>
+        <item>M\'Inscrire</item>
+    </string-array>
+
+
+    <string-array name="SpinnerRechCategorie">
+        <item>Compacte</item>
+        <item>Berline</item>
+        <item>Minifourgonnette</item>
+        <item>Pickup</item>
+        <item>VUS</item>
+        <item>4x4</item>
+        <item>Multisegment</item>
+        <item>Sport</item>
+        <item>Décapotable</item>
+        <item>Électrique</item>
+    </string-array>
+
+
+
 </resources>

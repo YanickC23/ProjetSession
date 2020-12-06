@@ -1,10 +1,18 @@
 package com.example.projetsession;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.Room;
 
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.Objets.Voiture;
+import com.example.projetsession.ROOM.ClientDAO;
+import com.example.projetsession.ROOM.LocationDAO;
+import com.example.projetsession.ROOM.LocationDB;
+import com.example.projetsession.ROOM.VoitureDAO;
+import com.example.projetsession.ROOM.Voiture_LocationDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +24,12 @@ public class Singleton {
     private List<Voiture> listeVoitures = new ArrayList<Voiture>();
     private List<Voiture> listeMesVoiture = new ArrayList<Voiture>();
     private List<Client> listeClients = new ArrayList<Client>();
+
+    LocationDB ldb;
+    VoitureDAO voitureDAO;
+    ClientDAO clientDAO;
+    LocationDAO locationDAO;
+    Voiture_LocationDAO voiture_locationDAO;
 
 
     private Singleton(){
@@ -30,6 +44,14 @@ public class Singleton {
         return Singlt;
     }
 
+    public LocationDB LDB(Context context){
+        LocationDB db_ldb;
+        db_ldb = Room.databaseBuilder(context , LocationDB.class, "LocationDB")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
+        return db_ldb;
+    }
 
     public static com.example.projetsession.Singleton getSinglt() {
         return Singlt;
@@ -40,15 +62,24 @@ public class Singleton {
     }
 
 
-    public List<Voiture> getListeVoitures() {
+    public List<Voiture> getListeVoitures(Context context) {
+        ldb = LDB(context);
+        voitureDAO = ldb.vdao();
+        listeVoitures = voitureDAO.getListe_Voiture();
         return listeVoitures;
     }
 
-    public List<Voiture> getListeMesVoiture() {
+    public List<Voiture> getListeMesVoiture(Context context) {
+      /*  ldb = LDB(context);
+        voitureDAO = ldb.vdao();
+        listeMesVoiture = voitureDAO.getProprioVoiture(idProprio);*/
         return listeMesVoiture;
     }
 
-    public List<Client> getListeClients() {
+    public List<Client> getListeClients(Context context) {
+        ldb = LDB(context);
+        clientDAO = ldb.cdao();
+        listeClients = clientDAO.get_ListeClients();
         return listeClients;
     }
 
@@ -100,6 +131,25 @@ public class Singleton {
 
     }
 
+    public void AjoutClient_ListeClient(Client client){
+        listeClients.add(client);
+    }
+
+    public void Modifier_ListeClients(int index ,String _Nom, String _Prenom, String _NoTel, String _Email,
+                                       String _MotDePasse, String _NoPermis, String _Carte_Credit){
+
+        listeClients.get(index).setNom(_Nom);
+        listeClients.get(index).setPrenom(_Prenom);
+        listeClients.get(index).setNoTel(_NoTel);
+        listeClients.get(index).setEmail(_Email);
+        listeClients.get(index).setMotDePasse(_MotDePasse);
+        listeClients.get(index).setNoPermis(_NoPermis);
+        listeClients.get(index).setCarte_credit(_Carte_Credit);
+
+
+    }
+
+
 
     public String Obt_MarqueVoiture(int index){
         return listeVoitures.get(index).getMarque();
@@ -132,6 +182,38 @@ public class Singleton {
     public String Obt_Statut(int index){
         return listeVoitures.get(index).getStatutLocation();
     }
+
+
+
+    public  String Obt_NomClient(int index){
+        return listeClients.get(index).getNom();
+    }
+    public  String Obt_PrenomClient(int index){
+        return listeClients.get(index).getPrenom();
+    }
+    public  String Obt_NoTelClient(int index){
+        return listeClients.get(index).getNoTel();
+    }
+    public  String Obt_CourrielClient(int index){
+        return listeClients.get(index).getEmail();
+    }
+    public  String Obt_MotDePasseClient(int index){
+        return listeClients.get(index).getMotDePasse();
+    }
+    public  String Obt_NoPermis(int index){
+        return listeClients.get(index).getNoPermis();
+    }
+    public  String Obt_CarteCredit(int index){
+        return listeClients.get(index).getCarte_credit();
+    }
+
+    public  String Obt_Prenom_Nom_Client(int index){
+        return listeClients.get(index).getNom() + " " + listeClients.get(index).getPrenom();
+    }
+
+
+
+
 
 
 }

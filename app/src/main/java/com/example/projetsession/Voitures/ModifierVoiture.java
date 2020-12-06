@@ -73,8 +73,6 @@ public class ModifierVoiture extends Fragment {
         edxCategorie = view.findViewById(R.id.edxCategorie);
         btnEnr = view.findViewById(R.id.btnEnrVoiture);
 
-
-
         SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstMVoit", Context.MODE_PRIVATE);
         positLstMVoit = pref.getInt("PositLstMVoit", 0);
 
@@ -85,14 +83,6 @@ public class ModifierVoiture extends Fragment {
         edxTarif.setText(Double.toString(Singleton.getInstance().Obt_TarifJournVoiture(positLstMVoit)));
         edxValeur.setText(Double.toString(Singleton.getInstance().Obt_PrixVoiture(positLstMVoit)));
         edxCategorie.setText(Singleton.getInstance().Obt_CategorieVoiture(positLstMVoit));
-
-
-
-
-
-
-
-
 
         btnEnr.setOnClickListener(new View.OnClickListener() {
             @Override

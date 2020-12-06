@@ -51,6 +51,24 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
         fragmentTransaction.commit();
 
 
+        Intent intent = getIntent();
+        String extraFragment;
+
+        if(intent.hasExtra("FragmentDemande")){
+
+            extraFragment = intent.getStringExtra("FragmentDemande");
+
+            if(extraFragment.equals("OffrirLocation")){
+
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragAjoutVoiture);
+                fragmentTransaction.commit();
+
+            }
+        }
+
+
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -104,7 +122,7 @@ public class GestionVoitures extends AppCompatActivity implements AjoutVoiture.I
 
     public List<Voiture> CreerListeMesVoitures(){
 
-        return Singleton.getInstance().getListeVoitures();
+        return Singleton.getInstance().getListeVoitures(this);
     }
 
 

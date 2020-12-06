@@ -1,5 +1,5 @@
 package com.example.projetsession;
-//aaaa test
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         liste = new ArrayList<Client>();
+
+
         //remplirListe();
         //getUtilisateur();
         //getUtilisateurById();
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
                 liste = response.body();
-                Log.d("response",liste.get(0).id + " " + liste.get(0).getNom());
+                Log.d("response",liste.get(0).id_client + " " + liste.get(0).getNom());
             }
 
             @Override

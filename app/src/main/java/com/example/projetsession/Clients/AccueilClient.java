@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.R;
 import com.example.projetsession.Voitures.GestionVoitures;
 import com.example.projetsession.Voitures.Liste_MesVoitures;
@@ -90,7 +91,9 @@ public class AccueilClient extends Fragment {
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //TODO ==> Gestion Location
+                Intent intent = new Intent(view.getContext(), GestionLocation.class);
+                intent.putExtra("FragmentDemande", "RechercheVoiture");
+                startActivity(intent);
             }
         });
 
