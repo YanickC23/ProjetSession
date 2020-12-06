@@ -7,7 +7,6 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetsession.Accueil.Accueil;
-import com.example.projetsession.Location.ListeDesVoitures;
 
 public class SplashScreen extends AppCompatActivity {
 
