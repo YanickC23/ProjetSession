@@ -34,7 +34,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:parentActivityName="com.example.projetsession.Accueil.Accueil" />
         <activity
             android:name=".Voitures.GestionVoitures"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

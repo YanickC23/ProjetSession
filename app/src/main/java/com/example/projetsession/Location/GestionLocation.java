@@ -1,6 +1,7 @@
 package com.example.projetsession.Location;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Adapter;
 
 import com.example.projetsession.Accueil.Accueil;
 import com.example.projetsession.Objets.Voiture;
@@ -76,6 +78,24 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_location, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Adapter_Toute_Voiture adapter_toute_voiture = new Adapter_Toute_Voiture();
+                //fragListeVoitures.adapter_toute_voiture.getFilter().filter(newText);
+                adapter_toute_voiture.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return super.onCreateOptionsMenu(menu);
     }
 

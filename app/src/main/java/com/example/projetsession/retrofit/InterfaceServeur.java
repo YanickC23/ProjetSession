@@ -14,18 +14,67 @@ import retrofit2.http.POST;
 
 public interface InterfaceServeur {
 
+     //méthode non requise
+    /*@GET("load_image.php")
+    Call<List<Image>> getAllImage();*/
 
-    @GET("load_image.php")
-    Call<List<Image>> getAllImage();
-
-    @GET("load_voiture.php")
+    @GET("voiture_load.php")
     Call<List<Voiture>> getAllVoiture();
+    @GET("voiture_load_user.php")
+    Call<List<Voiture>> getUserVoiture();
+    @GET("voiture_changer.php")
+    Call<List<Voiture>> changer_voiture();
+    @GET("voiture_supprimer.php")
+    Call<List<Voiture>> retirer_voiture();
+    @GET("voiture_ajout.php")
+    Call<List<Voiture>> nouvelle_voiture();
 
-    @GET("/donnees")
+
+    @GET("client_load.php")
+    Call<Client> getAllClient();
+
+    @GET("user_conn.php")
+    Call<Client> getConnectionInfo();
+    @GET("user_new_user.php")
+    Call<Client> créateAccount();
+    @GET("user_changer_profil.php")
+    Call<Client> changeProfil();
+    @GET("user_changer_motdepasse.php")
+    Call<Client> changePassword();
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@GET("/donnees")
     Call<List<Client>> getAllClientFromServer();
 
     @GET("/client.php")
-    Call<Client> getClientFromServer();
+    Call<Client> getClientFromServer();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @GET("/client.php")
     Call<List<Client>> getClientvBisFromServer();
