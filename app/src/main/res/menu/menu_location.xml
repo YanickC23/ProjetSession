@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/mnAccueil"
@@ -17,4 +18,11 @@
         android:id="@+id/mnListeVehicule"
         android:icon="@drawable/icone_liste"
         android:title="Liste des Véhicules" />
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/icone_recherche"
+        android:title="Recherche"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>

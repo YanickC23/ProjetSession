@@ -33,7 +33,7 @@ public class ListeVoitures extends Fragment {
     private List<Voiture> listeVoitures;
 
     private RecyclerView rvListedesvoitres;
-    private Adapter_Toute_Voiture adapter_toute_voiture;
+    public Adapter_Toute_Voiture adapter_toute_voiture;
 
 
     public ListeVoitures() {

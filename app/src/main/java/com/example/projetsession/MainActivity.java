@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+/*
     public void remplirListe() {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<List<Client>> call = serveur.getAllClientFromServer();
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
   /*  public void getUtilisateurById() {
         InterfaceServeur serveur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
         Call<Client> call = RetrofitService.getService().getUtilisateurById(1);
