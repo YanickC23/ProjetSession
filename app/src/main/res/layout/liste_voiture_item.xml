@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".Location.ListeVoitures" >
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,12 +17,10 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
             <ImageView
                 android:id="@+id/imageDesVoiture"
                 android:layout_width="match_parent"
@@ -33,7 +30,6 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="7"
                 android:src="@drawable/we23rfdwe" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +39,6 @@
                 android:layout_marginBottom="15dp"
                 android:layout_weight="4"
                 android:orientation="vertical">
-
                 <TextView
                     android:id="@+id/tv_toutlesvoituresMarqueetModele"
                     android:layout_width="match_parent"
@@ -53,7 +48,6 @@
                     android:text="Toyota Matrix"
                     android:textColor="@color/couleurTexteBouton"
                     android:textSize="22dp" />
-
                 <TextView
                     android:id="@+id/tv_toutlesvoitureAnnee"
                     android:layout_width="match_parent"
@@ -64,7 +58,6 @@
                     android:textColor="?attr/actionMenuTextColor"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/tv_toutlesvoituresTafifs"
                     android:layout_width="match_parent"

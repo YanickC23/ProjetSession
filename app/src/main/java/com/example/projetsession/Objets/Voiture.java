@@ -8,8 +8,10 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -21,7 +23,7 @@ import static androidx.room.ForeignKey.CASCADE;
                         childColumns = "proprio",
                         onDelete = CASCADE)})
 
-public class Voiture {
+public class Voiture implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -29,39 +31,53 @@ public class Voiture {
     @SerializedName("id_voiture")
     public int id_voiture;
 
+    @Expose
     @SerializedName("marque")
-    String marque;
+    public String marque;
+    @Expose
     @SerializedName("modele")
     String modele;
+    @Expose
     @SerializedName("annee")
     Integer annee;
-    @SerializedName("prix")
-    Double prix;
+    @Expose
+    @SerializedName("valeur")
+    Double valeur;
+    @Expose
     @SerializedName("categorie")
     String categorie;
     @SerializedName("statutDisponible")
     boolean statutDisponible;
+    @Expose
     @SerializedName("descript")
     String descript;
-    @SerializedName("tarifJourn")
-    Double tarifJourn;
+    @Expose
+    @SerializedName("tarif")
+    Double tarif;
+    @Expose
     @SerializedName("proprio")
     Integer proprio;
+    @Expose
+    @SerializedName("path")
+    public String path;
+
+
 
     public Voiture(int _Id_voiture, String _Marque, String _Modele, Integer _Annee,
                    Double _Prix, boolean _StatutDispo, String _Description,
-                        Double _TarifJournalier, String _Categorie, Integer _Proprio) {
+                   Double _TarifJournalier, String _Categorie, Integer _Proprio, String _Path) {
 
         this.id_voiture = _Id_voiture;
         this.marque = _Marque;
         this.modele = _Modele;
         this.annee = _Annee;
-        this.prix = _Prix;
+        this.valeur = _Prix;
         this.statutDisponible = _StatutDispo;
         this.descript = _Description;
-        this.tarifJourn = _TarifJournalier;
+        this.tarif = _TarifJournalier;
         this.categorie = _Categorie;
         this.proprio = _Proprio;
+        this.path = _Path;
     }
 
 
@@ -109,12 +125,12 @@ public class Voiture {
         this.annee = annee;
     }
 
-    public Double getPrix() {
-        return prix;
+    public Double getValeur() {
+        return valeur;
     }
 
-    public void setPrix(Double prix) {
-        this.prix = prix;
+    public void setValeur(Double valeur) {
+        this.valeur = valeur;
     }
 
     public boolean isStatutDisponible() {
@@ -144,12 +160,12 @@ public class Voiture {
         this.descript = descript;
     }
 
-    public Double getTarifJourn() {
-        return tarifJourn;
+    public Double getTarif() {
+        return tarif;
     }
 
-    public void setTarifJourn(Double tarifJourn) {
-        this.tarifJourn = tarifJourn;
+    public void setTarif(Double tarif) {
+        this.tarif = tarif;
     }
 
 
@@ -166,6 +182,14 @@ public class Voiture {
         this.proprio = proprio;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     @Override
     public String toString() {
         return "Voiture{" +
@@ -173,11 +197,11 @@ public class Voiture {
                 ", marque='" + marque + '\'' +
                 ", modele='" + modele + '\'' +
                 ", annee=" + annee +
-                ", prix=" + prix +
+                ", valeur=" + valeur +
                 ", categorie='" + categorie + '\'' +
                 ", statutDisponible=" + statutDisponible +
                 ", descript='" + descript + '\'' +
-                ", tarifJourn=" + tarifJourn +
+                ", tarif=" + tarif +
                 ", proprio=" + proprio +
                 '}';
     }
@@ -192,16 +216,16 @@ public class Voiture {
                 marque.equals(voiture.marque) &&
                 modele.equals(voiture.modele) &&
                 annee.equals(voiture.annee) &&
-                prix.equals(voiture.prix) &&
+                valeur.equals(voiture.valeur) &&
                 categorie.equals(voiture.categorie) &&
                 descript.equals(voiture.descript) &&
-                tarifJourn.equals(voiture.tarifJourn) &&
+                tarif.equals(voiture.tarif) &&
                 Objects.equals(proprio, voiture.proprio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_voiture, marque, modele, annee, prix, categorie, statutDisponible, descript, tarifJourn, proprio);
+        return Objects.hash(id_voiture, marque, modele, annee, valeur, categorie, statutDisponible, descript, tarif, proprio);
     }
 
 }
