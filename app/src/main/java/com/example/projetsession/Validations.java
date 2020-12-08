@@ -1,5 +1,6 @@
 package com.example.projetsession;
 
+
 import android.widget.EditText;
 
 public class Validations {
@@ -133,6 +134,7 @@ public class Validations {
 
         return valide;
     }
+
 
 
 
