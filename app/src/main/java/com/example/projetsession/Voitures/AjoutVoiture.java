@@ -194,10 +194,10 @@ public class AjoutVoiture extends Fragment {
         voiture.setModele(modele);
         voiture.setCategorie(categorie);
         voiture.setAnnee(annee);
-        voiture.setPrix(prix);
+        voiture.setValeur(prix);
         voiture.setDescript(description);
         voiture.setStatutDisponible(statutDispo);
-        voiture.setTarifJourn(tarifJournalier);
+        voiture.setTarif(tarifJournalier);
 
         return voiture;
 

@@ -1,26 +1,23 @@
 package com.example.projetsession.Location;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
+import android.widget.Adapter;
 
 import com.example.projetsession.Accueil.Accueil;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
-import com.example.projetsession.Voitures.GestionVoitures;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -36,7 +33,6 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     BottomNavigationView bottomNavClient;
-    BottomNavigationView bottomNavLocation;
 
     List<Voiture> listeVoiture =  new ArrayList<Voiture>();
 
@@ -48,7 +44,6 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         bottomNavClient = findViewById(R.id.bnvClient);
-        bottomNavLocation = findViewById(R.id.bnvLocation);
         fragListeVoitures = new ListeVoitures();
         fragLouerVoiture = new LouerVoiture();
         fragRechercheVoiture = new RechercheVoiture();
@@ -75,53 +70,82 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
             }
 
         }
-
-
-
-
-        bottomNavLocation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
-
-                Intent intentGestVoit = new Intent(getApplicationContext(), GestionVoitures.class);
-                Intent intentGestLocation = new Intent(getApplicationContext(), GestionLocation.class);
-                Intent intentAccueil = new Intent(getApplicationContext(), Accueil.class);
-
-                switch (menuItem.getItemId()){
-
-
-                    case R.id.mnAccueil:
-                        intentAccueil.putExtra("FragmentDemande", "PageAccueil");
-                        startActivity(intentAccueil);
-                        return true;
-
-                    case R.id.mnMeConnecter:
-                        intentAccueil.putExtra("FragmentDemande", "PageLogin");
-                        startActivity(intentAccueil);
-                        return true;
-
-                    case R.id.mnRechVehicule:
-                        intentGestLocation.putExtra("FragmentDemande", "RechercheVoiture");
-                        startActivity(intentGestLocation);
-                        return true;
-
-                    case R.id.mnListeVehicule:
-                        intentGestLocation.putExtra("FragmentDemande", "ListeVoiture");
-                        startActivity(intentGestLocation);
-                        return true;
-
-                    default:
-                        return false;
-
-
-                }
-            }
-        });
-
     }
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_location, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Adapter_Toute_Voiture adapter_toute_voiture = new Adapter_Toute_Voiture();
+                //fragListeVoitures.adapter_toute_voiture.getFilter().filter(newText);
+                adapter_toute_voiture.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        menu.findItem(R.id.mnAccueil).setVisible(true);
+        menu.findItem(R.id.mnMeConnecter).setVisible(true);
+        menu.findItem(R.id.mnRechVehicule).setVisible(true);
+        menu.findItem(R.id.mnListeVehicule).setVisible(true);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+
+        Intent intent = new Intent(this, Accueil.class);
+        switch (menuItem.getItemId()){
+
+
+            case R.id.mnAccueil:
+                intent.putExtra("FragmentDemande", "PageAccueil");
+                startActivity(intent);
+                return true;
+
+            case R.id.mnMeConnecter:
+                intent.putExtra("FragmentDemande", "PageLogin");
+                startActivity(intent);
+                return true;
+
+            case R.id.mnRechVehicule:
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragRechercheVoiture);
+                fragmentTransaction.commit();
+                return true;
+
+            case R.id.mnListeVehicule:
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragListeVoitures);
+                fragmentTransaction.commit();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+
+
+        }
+    }
 
 
 
