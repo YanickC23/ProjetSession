@@ -1,16 +1,25 @@
 package com.example.projetsession.Location;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetsession.Accueil.Accueil;
 import com.example.projetsession.Objets.Image;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
@@ -29,6 +38,12 @@ public class Adapter_Toute_Voiture
     Double valeur,tarif;
     boolean Statut;
 
+    Context context;
+
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    LouerVoiture fragListeVoitures;
+
 
     private List<Voiture> voitureList;
     private List<Voiture> voitureListFull;
@@ -40,6 +55,7 @@ public class Adapter_Toute_Voiture
     public Adapter_Toute_Voiture(List<Voiture> voitureList){
         this.voitureList = voitureList;
         voitureListFull = new ArrayList<>(voitureList);
+        fragListeVoitures = new LouerVoiture();
     }
 
     @NonNull
@@ -53,6 +69,8 @@ public class Adapter_Toute_Voiture
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
        Voiture voiture = voitureList.get(position);
+
+
 
            holder.itemView.setVisibility(View.VISIBLE);
            holder.tvmodeteetmarque.setText(voiture.getMarqueModele());
@@ -111,7 +129,6 @@ public class Adapter_Toute_Voiture
                 @Override
                 public void onClick(View v) {
                     int index = getLayoutPosition();
-                    if(voitureList != voitureListFull) {
                         marque = voitureList.get(index).getMarque();
                         modele = voitureList.get(index).getModele();
                         annee = voitureList.get(index).getAnnee();
@@ -122,18 +139,16 @@ public class Adapter_Toute_Voiture
                         categorie = voitureList.get(index).getCategorie();
                         proprio = voitureList.get(index).getProprio();
                         path = voitureList.get(index).getPath();
-                    }else{
-                        marque = voitureListFull.get(index).getMarque();
-                        modele = voitureListFull.get(index).getModele();
-                        annee = voitureListFull.get(index).getAnnee();
-                        valeur = voitureListFull.get(index).getValeur();
-                        Statut = voitureListFull.get(index).isStatutDisponible();
-                        description = voitureListFull.get(index).getDescription();
-                        tarif = voitureListFull.get(index).getTarif();
-                        categorie = voitureListFull.get(index).getCategorie();
-                        proprio = voitureListFull.get(index).getProprio();
-                        path = voitureListFull.get(index).getPath();
-                    }
+
+                    //GestionLocation.AfficherVoitureinfolocation.afficherVoitureinfolocation();
+                    //Intent intent = new Intent(itemView.getContext(), RecyclerView.Adapter.class);
+                  /*  fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragListeVoitures);
+                    fragmentTransaction.commit();*/
+
+
+
+
 
                 }
             });
@@ -145,4 +160,11 @@ public class Adapter_Toute_Voiture
     voitureList.addAll(newList);
     notifyDataSetChanged();
     }
+
+
+/*
+    public interface OnTextClickListener {
+        void onTextClick(Voiture data);
+    }*/
+
 }

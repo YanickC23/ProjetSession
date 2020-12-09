@@ -120,7 +120,6 @@ SearchView.OnQueryTextListener{
         Intent intent = new Intent(this, Accueil.class);
         switch (menuItem.getItemId()){
 
-
             case R.id.mnAccueil:
                 intent.putExtra("FragmentDemande", "PageAccueil");
                 startActivity(intent);
@@ -241,4 +240,15 @@ SearchView.OnQueryTextListener{
         adapter_toute_voiture.updateList(newList);
         return true;
     }
+/*
+      Voiture voitureData;
+           public Voiture GetAfficherLocationVoitureData(){
+                return voitureData;
+           }
+
+           public void SetAfficherLocationVoitureData(Voiture voiture){
+                this.voitureData = voiture;
+           }*/
+
+
 }
