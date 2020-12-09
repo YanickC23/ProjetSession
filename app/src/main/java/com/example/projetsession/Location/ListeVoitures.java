@@ -56,8 +56,8 @@ public class ListeVoitures extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_liste_des_voitures, container, false);
 
 
-        configView(view);
-        remplirListeVoiture();
+        //configView(view);
+       // remplirListeVoiture();
 
       /*  recyclerView = view.findViewById(R.id.rvLocation);
         recyclerView.setHasFixedSize(false);
@@ -80,7 +80,7 @@ public class ListeVoitures extends Fragment {
 
     }
 
-    public void configView(View v){
+   /* public void configView(View v){
         rvListedesvoitres = (RecyclerView) v.findViewById(R.id.rvListeDesVoitures);
         rvListedesvoitres.setHasFixedSize(true);
         rvListedesvoitres.setRecycledViewPool(new RecyclerView.RecycledViewPool());
@@ -116,5 +116,9 @@ public class ListeVoitures extends Fragment {
         });
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter_toute_voiture.notifyDataSetChanged();
+    }*/
 }

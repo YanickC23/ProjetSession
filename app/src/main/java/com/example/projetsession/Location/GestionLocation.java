@@ -5,6 +5,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,19 +14,27 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Adapter;
+import android.widget.Toast;
 
 import com.example.projetsession.Accueil.Accueil;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
+import com.example.projetsession.retrofit.InterfaceServeur;
+import com.example.projetsession.retrofit.RetrofitInstance;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionLocation extends AppCompatActivity implements ListeVoitures.InterfaceListe_LocationVoiture,
-                                                                    RechercheVoiture.InterfaceRechercheVoiture{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class GestionLocation extends AppCompatActivity
+        implements ListeVoitures.InterfaceListe_LocationVoiture,
+        RechercheVoiture.InterfaceRechercheVoiture,
+SearchView.OnQueryTextListener{
 
     ListeVoitures fragListeVoitures;
     LouerVoiture fragLouerVoiture;
@@ -35,6 +45,10 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
     BottomNavigationView bottomNavClient;
 
     List<Voiture> listeVoiture =  new ArrayList<Voiture>();
+
+    private RecyclerView rvListedesvoitres;
+    public Adapter_Toute_Voiture adapter_toute_voiture;
+    public List<Voiture> marques = new ArrayList<>();
 
 
     @Override
@@ -48,6 +62,8 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
         fragLouerVoiture = new LouerVoiture();
         fragRechercheVoiture = new RechercheVoiture();
 
+        configView();
+        remplirListeVoiture();
 
 
         Intent intent = getIntent();
@@ -81,20 +97,7 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Adapter_Toute_Voiture adapter_toute_voiture = new Adapter_Toute_Voiture();
-                //fragListeVoitures.adapter_toute_voiture.getFilter().filter(newText);
-                adapter_toute_voiture.getFilter().filter(newText);
-                return false;
-            }
-        });
+        searchView.setOnQueryTextListener(this);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -175,5 +178,67 @@ public class GestionLocation extends AppCompatActivity implements ListeVoitures.
 
 
 
+    public void configView(){
+        rvListedesvoitres = (RecyclerView) findViewById(R.id.rvLocation);
+        rvListedesvoitres.setHasFixedSize(true);
+        rvListedesvoitres.setRecycledViewPool(new RecyclerView.RecycledViewPool());
+        rvListedesvoitres.setLayoutManager(new LinearLayoutManager(this));
+        adapter_toute_voiture = new Adapter_Toute_Voiture(marques);
+        rvListedesvoitres.setAdapter(adapter_toute_voiture);
+    }
 
+
+    public void remplirListeVoiture(){
+        InterfaceServeur interfaceServeur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        Call<List<Voiture>> call = interfaceServeur.getAllVoiture();
+
+        call.enqueue(new Callback<List<Voiture>>() {
+            @Override
+            public void onResponse(Call<List<Voiture>> call, Response<List<Voiture>> response) {
+
+                if (response.isSuccessful()) {
+                    List<Voiture> listVoiture = response.body();
+
+                    for (int i = 0; i < listVoiture.size(); i++) {
+                        Voiture voiture = listVoiture.get(i);
+                        //Toast.makeText(getContext(),"" + response.body().get(i),Toast.LENGTH_LONG).show();
+                        adapter_toute_voiture.ajouterVoiture(voiture);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Voiture>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter_toute_voiture.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        String userInput = newText.toLowerCase();
+        List<Voiture> newList = new ArrayList<>();
+        String text;
+        for(Voiture marque : marques ){
+                text = marque.getMarque().toString();
+              if(text.toLowerCase().contains(userInput)){
+                  newList.add(marque);
+              }
+        }
+        adapter_toute_voiture.updateList(newList);
+        return true;
+    }
 }

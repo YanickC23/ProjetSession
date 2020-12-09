@@ -4,19 +4,24 @@ import com.google.gson.annotations.SerializedName;
 
 
 public class ServerResponse {
+   @SerializedName("kode")
+   String kode;
+    @SerializedName("pesan")
+    String pesan;
 
-    // variable name should be same as in the json response from php
-    @SerializedName("success")
-    boolean success;
-    @SerializedName("message")
-    String message;
-
-    public String getMessage() {
-        return message;
+    public String getKode() {
+        return kode;
     }
 
-    public boolean getSuccess() {
-        return success;
+    public void setKode(String kode) {
+        this.kode = kode;
     }
 
+    public String getPesan() {
+        return pesan;
+    }
+
+    public void setPesan(String pesan) {
+        this.pesan = pesan;
+    }
 }

@@ -22,8 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_Toute_Voiture
-        extends RecyclerView.Adapter<Adapter_Toute_Voiture.Holder>
-implements Filterable {
+        extends RecyclerView.Adapter<Adapter_Toute_Voiture.Holder>{
+
+    String marque,modele,description,categorie,path;
+    Integer annee,proprio;
+    Double valeur,tarif;
+    boolean Statut;
+
 
     private List<Voiture> voitureList;
     private List<Voiture> voitureListFull;
@@ -68,39 +73,25 @@ implements Filterable {
         notifyDataSetChanged();
     }
 
-    @Override
-    public Filter getFilter() {
-        return voiturefilter;
+    public void modifierVoiture(int index,String marque,String modele,Integer annee,Double valeur,boolean Statut,
+            String description, Double tarif, String categorie, Integer proprio, String path){
+        voitureList.get(index).setMarque(marque);
+        voitureList.get(index).setModele(modele);
+        voitureList.get(index).setAnnee(annee);
+        voitureList.get(index).setValeur(valeur);
+        voitureList.get(index).setStatutDisponible(Statut);
+        voitureList.get(index).setDescription(description);
+        voitureList.get(index).setTarif(tarif);
+        voitureList.get(index).setCategorie(categorie);
+        voitureList.get(index).setProprio(proprio);
+        voitureList.get(index).setPath(path);
+        notifyItemChanged(index);
     }
 
-    private Filter voiturefilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-           List<Voiture> listfiltre = new ArrayList<Voiture>();
-
-          if(constraint == null || constraint.length() == 0){
-              listfiltre.addAll(voitureListFull);
-          }else {
-              String filterPattern = constraint.toString().toLowerCase().trim();
-              for(Voiture voiture : voitureListFull){
-                  if(voiture.getMarqueModele().toLowerCase().contains(filterPattern)){
-                      listfiltre.add(voiture);
-                  }
-              }
-          }
-          FilterResults results = new FilterResults();
-          results.values = listfiltre;
-
-          return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            voitureList.clear();
-            voitureList.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
+    public void supprimerVoiture(int index){
+        voitureList.remove(index);
+        notifyItemRemoved(index);
+    }
 
     public class Holder extends RecyclerView.ViewHolder{
 
@@ -114,6 +105,44 @@ implements Filterable {
             tvmodeteetmarque = itemView.findViewById(R.id.tv_toutlesvoituresMarqueetModele);
             tvannee = itemView.findViewById(R.id.tv_toutlesvoitureAnnee);
             tvtafifs = itemView.findViewById(R.id.tv_toutlesvoituresTafifs);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int index = getLayoutPosition();
+                    if(voitureList != voitureListFull) {
+                        marque = voitureList.get(index).getMarque();
+                        modele = voitureList.get(index).getModele();
+                        annee = voitureList.get(index).getAnnee();
+                        valeur = voitureList.get(index).getValeur();
+                        Statut = voitureList.get(index).isStatutDisponible();
+                        description = voitureList.get(index).getDescription();
+                        tarif = voitureList.get(index).getTarif();
+                        categorie = voitureList.get(index).getCategorie();
+                        proprio = voitureList.get(index).getProprio();
+                        path = voitureList.get(index).getPath();
+                    }else{
+                        marque = voitureListFull.get(index).getMarque();
+                        modele = voitureListFull.get(index).getModele();
+                        annee = voitureListFull.get(index).getAnnee();
+                        valeur = voitureListFull.get(index).getValeur();
+                        Statut = voitureListFull.get(index).isStatutDisponible();
+                        description = voitureListFull.get(index).getDescription();
+                        tarif = voitureListFull.get(index).getTarif();
+                        categorie = voitureListFull.get(index).getCategorie();
+                        proprio = voitureListFull.get(index).getProprio();
+                        path = voitureListFull.get(index).getPath();
+                    }
+
+                }
+            });
         }
+    }
+
+    public void updateList(List<Voiture> newList){
+    voitureList = new ArrayList<>();
+    voitureList.addAll(newList);
+    notifyDataSetChanged();
     }
 }
