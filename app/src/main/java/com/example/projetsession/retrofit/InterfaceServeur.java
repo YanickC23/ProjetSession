@@ -38,6 +38,10 @@ public interface InterfaceServeur {
     @Multipart
     @POST("images")
     Call<ResponseBody> uploadImage(@Part("description") RequestBody description, @Part MultipartBody.Part image);
+    @POST("upload.php")
+    @FormUrlEncoded
+    Call<Image> uploadimage(@Field("title")String title,@Field("image")String image);
+
 
 
     @GET("voiture_load.php")
@@ -55,10 +59,22 @@ public interface InterfaceServeur {
     @GET("client_load.php")
     Call<Client> getAllClient();
 
-    @GET("user_conn.php")
-    Call<Client> getConnectionInfo();
-    @GET("user_new_user.php")
-    Call<Client> créateAccount();
+    @FormUrlEncoded
+    @POST("user_conn.php")
+    Call<Client> getConnectionInfo(
+            @Field("email")String email,
+            @Field("password")String password);
+
+    @FormUrlEncoded
+    @POST("user_new_user.php")
+    Call<ResponseBody> créateAccount(
+            @Field("nom")String nom,
+            @Field("prenom")String prenom,
+            @Field("telephone")String telephone,
+            @Field("courriel")String courriel,
+            @Field("motDePasse")String motDePasse,
+            @Field("noPermis")String noPermis,
+            @Field("carte_credit")String carte_credits);
     @GET("user_changer_profil.php")
     Call<Client> changeProfil();
     @GET("user_changer_motdepasse.php")

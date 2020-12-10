@@ -1,5 +1,6 @@
 package com.example.projetsession.Location;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
@@ -17,9 +18,12 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.projetsession.Accueil.Accueil;
+import com.example.projetsession.Clients.GestionClients;
+import com.example.projetsession.MapsActivity;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
+import com.example.projetsession.Voitures.GestionVoitures;
 import com.example.projetsession.retrofit.InterfaceServeur;
 import com.example.projetsession.retrofit.RetrofitInstance;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +46,7 @@ SearchView.OnQueryTextListener{
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-    BottomNavigationView bottomNavClient;
+    BottomNavigationView bottomNavLocation;
 
     List<Voiture> listeVoiture =  new ArrayList<Voiture>();
 
@@ -57,7 +61,7 @@ SearchView.OnQueryTextListener{
         setContentView(R.layout.activity_gestionlocation);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        bottomNavClient = findViewById(R.id.bnvClient);
+        bottomNavLocation = findViewById(R.id.bnvLocation);
         fragListeVoitures = new ListeVoitures();
         fragLouerVoiture = new LouerVoiture();
         fragRechercheVoiture = new RechercheVoiture();
@@ -86,6 +90,78 @@ SearchView.OnQueryTextListener{
             }
 
         }
+
+        bottomNavLocation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
+                Intent intentGestVoit = new Intent(getApplicationContext(), GestionVoitures.class);
+                Intent intentGestLocation = new Intent(getApplicationContext(), GestionLocation.class);
+                Intent AccueilIntent = new Intent(getApplicationContext(), Accueil.class);
+
+                switch (menuItem.getItemId()){
+
+                    /*case R.id.mnMonProfil:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFrag_GestClient, fragModifCompte);
+                        fragmentTransaction.commit();
+                        return true;
+
+                    case R.id.mnListeClient:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFrag_GestClient, fragListeClient);
+                        fragmentTransaction.commit();
+                        return true;
+
+                    case R.id.mnOffrirLocation:
+                        intentGestVoit.putExtra("FragmentDemande", "OffrirLocation");
+                        startActivity(intentGestVoit);
+                        return true;
+
+                    case R.id.mnMesAuto:
+                        intentGestVoit.putExtra("FragmentDemande", "ListeMesVoitures");
+                        startActivity(intentGestVoit);
+                        return true;
+
+                    case R.id.mnLouer:
+                        intentGestLocation.putExtra("FragmentDemande", "RechercheVoiture");
+                        startActivity(intentGestLocation);
+                        return true;*/
+
+                    case R.id.mnAccueil:
+                        AccueilIntent.putExtra("FragmentDemande", "PageAccueil");
+                        startActivity(AccueilIntent);
+                        return true;
+
+                    case R.id.mnGooglemap:
+                        Intent MapIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(MapIntent);
+                        return true;
+
+                    case R.id.mnlogin:
+                        AccueilIntent.putExtra("FragmentDemande", "PageLogin");
+                        startActivity(AccueilIntent);
+                        return true;
+
+                    case R.id.mnProfil:
+                        Intent intent = new Intent(getApplicationContext(), GestionLocation.class);
+                        intent.putExtra("FragmentDemande", "AccueilClient");
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.mnRechVehicule:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFrag_GestLocation, fragRechercheVoiture);
+                        fragmentTransaction.commit();
+                        return true;
+                }
+
+                return false;
+
+            }
+
+        });
+
+
     }
 
 

@@ -16,7 +16,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.projetsession.Accueil.Accueil;
 import com.example.projetsession.Location.GestionLocation;
+import com.example.projetsession.Location.RechercheVoiture;
+import com.example.projetsession.MapsActivity;
 import com.example.projetsession.Objets.Client;
 import com.example.projetsession.R;
 import com.example.projetsession.Singleton;
@@ -31,7 +34,7 @@ import java.util.List;
 public class GestionClients extends AppCompatActivity  implements CreationCompte.InterfaceCreationCompte,
                                                                     ListeClients.InterfaceListe_Clients,
                                                                         ModificationCompte.InterfaceModifierCompte{
-
+    RechercheVoiture fragRechercheVoiture;
     ListeClients fragListeClient;
     AccueilClient fragAccueilClient;
     CreationCompte fragCreationCompte;
@@ -51,6 +54,8 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         fragCreationCompte = new CreationCompte();
         fragListeClient = new ListeClients();
         fragModifCompte = new ModificationCompte();
+        fragRechercheVoiture = new RechercheVoiture();
+
 
         Intent intent = getIntent();
         String extraFragment;
@@ -79,10 +84,11 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
                 Intent intentGestVoit = new Intent(getApplicationContext(), GestionVoitures.class);
                 Intent intentGestLocation = new Intent(getApplicationContext(), GestionLocation.class);
+                Intent AccueilIntent = new Intent(getApplicationContext(), Accueil.class);
 
                 switch (menuItem.getItemId()){
 
-                    case R.id.mnMonProfil:
+                    /*case R.id.mnMonProfil:
                         fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.flFrag_GestClient, fragModifCompte);
                         fragmentTransaction.commit();
@@ -107,8 +113,34 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
                     case R.id.mnLouer:
                         intentGestLocation.putExtra("FragmentDemande", "RechercheVoiture");
                         startActivity(intentGestLocation);
+                        return true;*/
+
+                    case R.id.mnAccueil:
+                        AccueilIntent.putExtra("FragmentDemande", "PageAccueil");
+                        startActivity(AccueilIntent);
                         return true;
 
+                    case R.id.mnGooglemap:
+                        Intent MapIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(MapIntent);
+                        return true;
+
+                    case R.id.mnlogin:
+                        AccueilIntent.putExtra("FragmentDemande", "PageLogin");
+                        startActivity(AccueilIntent);
+                        return true;
+
+                    case R.id.mnProfil:
+                        Intent intent = new Intent(getApplicationContext(), GestionClients.class);
+                        intent.putExtra("FragmentDemande", "AccueilClient");
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.mnRechVehicule:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.flFrag_GestClient, fragRechercheVoiture);
+                        fragmentTransaction.commit();
+                        return true;
                 }
 
                 return false;

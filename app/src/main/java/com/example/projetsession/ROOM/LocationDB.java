@@ -8,7 +8,7 @@ import com.example.projetsession.Objets.Location;
 import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.Objets.Voiture_Location;
 
-@Database(entities = {Client.class, Voiture.class, Location.class, Voiture_Location.class}, version = 2, exportSchema = false)
+@Database(entities = {Client.class, Voiture.class, Location.class, Voiture_Location.class}, version = 3, exportSchema = false)
 public abstract class LocationDB extends RoomDatabase {
 
     public abstract ClientDAO cdao();

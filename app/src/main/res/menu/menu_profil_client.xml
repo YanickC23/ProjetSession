@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mnOffrirLocation"
-        android:icon="@drawable/icone_offrir"
-        android:title="Offrir en Location" />
+        android:id="@+id/mnAccueil"
+        android:icon="@drawable/icone_accueil"
+        android:title="Accueil" />
     <item
-        android:id="@+id/mnMesAuto"
-        android:icon="@drawable/icone_voitures"
-        android:title="Mes Véhicules" />
+        android:id="@+id/mnlogin"
+        android:icon="@drawable/icone_login"
+        android:title="Me connecter" />
     <item
-        android:id="@+id/mnMonProfil"
+        android:id="@+id/mnProfil"
         android:icon="@drawable/icone_profil"
-        android:title="Mon Profil" />
+        android:title="Profil" />
     <item
-        android:id="@+id/mnLouer"
-        android:icon="@drawable/icone_louer"
-        android:title="Louer un Véhicule" />
+        android:id="@+id/mnGooglemap"
+        android:icon="@drawable/icon_map"
+        android:title="Map" />
     <item
-        android:id="@+id/mnListeClient"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="ListeClient" />
+        android:id="@+id/mnRechVehicule"
+        android:icon="@drawable/icone_recherche"
+        android:title="Rechercher par" />
 </menu>

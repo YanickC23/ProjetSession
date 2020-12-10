@@ -1,49 +1,26 @@
 package com.example.projetsession.Objets;
 
-import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+public class Image {
 
-public class Image implements Serializable {
-
-    @Expose
-    private String id_image;
-    @Expose
-    private String id_voiture;
-    @Expose
+    @SerializedName("title")
     private String title;
-    @Expose
-    private String path;
 
-    public String getId_image() {
-        return id_image;
-    }
+    @SerializedName("image")
+    private String image;
 
-    public void setId_image(String id_image) {
-        this.id_image = id_image;
-    }
+    @SerializedName("response")
+    private String response;
 
-    public String getId_voiture() {
-        return id_voiture;
-    }
-
-    public void setId_voiture(String id_voiture) {
-        this.id_voiture = id_voiture;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+    public Image(String title, String image, String response) {
         this.title = title;
+        this.image = image;
+        this.response = response;
     }
 
-    public String getPath() {
-        return path;
+    public String getResponse(){
+        return response;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
 }

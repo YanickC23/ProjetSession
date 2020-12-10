@@ -136,13 +136,13 @@ public class RechercheVoiture extends Fragment {
         btnRech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+/*
                 marque = edxmarque.getText().toString();
                 modele = edxmodele.getText().toString();
                 dateDebut = edxdateDebut.getText().toString();
                 dateFin = edxdateFin.getText().toString();
                 tarifMin = Double.parseDouble(edxtarifMin.getText().toString());
-                tarifMax = Double.parseDouble(edxtarifMax.getText().toString());
+                tarifMax = Double.parseDouble(edxtarifMax.getText().toString());*/
             }
         });
     }
@@ -150,7 +150,7 @@ public class RechercheVoiture extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        interfaceRechercheVoiture = (InterfaceRechercheVoiture) context;
+        //interfaceRechercheVoiture = (InterfaceRechercheVoiture) context;
     }
 
 
