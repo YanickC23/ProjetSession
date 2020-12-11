@@ -98,7 +98,7 @@ public class MapsActivity extends AppCompatActivity implements LocationListener 
                 MapsActivity.this.googleMap = googleMap;
                 googleMap.moveCamera(CameraUpdateFactory.zoomBy(15));
                 googleMap.setMyLocationEnabled(true);
-                googleMap.addMarker(new MarkerOptions().position(new LatLng(43.222222, 6.720000))); //test pour placer un marqueur
+                //googleMap.addMarker(new MarkerOptions().position(new LatLng(43.222222, 6.720000))); //test pour placer un marqueur
 
                 //mUiSettings.setZoomControlsEnabled(isChecked(R.id.zoom_buttons_toggle));
             }
@@ -120,7 +120,7 @@ public class MapsActivity extends AppCompatActivity implements LocationListener 
         double latitude = location.getLatitude();
         double longiture = location.getLongitude();
 
-        Toast.makeText(this, "location: " + latitude + longiture,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "location: " + latitude + longiture,Toast.LENGTH_SHORT).show();
         if(googleMap != null){
             LatLng googleLocation = new LatLng( latitude, longiture);
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(googleLocation));

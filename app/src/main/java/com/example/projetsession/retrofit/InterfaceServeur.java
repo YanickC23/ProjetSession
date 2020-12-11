@@ -62,19 +62,19 @@ public interface InterfaceServeur {
     @FormUrlEncoded
     @POST("user_conn.php")
     Call<Client> getConnectionInfo(
-            @Field("email")String email,
-            @Field("password")String password);
+            @Field("courriel")String courriel,
+            @Field("motdepasse")String motdepasse);
 
     @FormUrlEncoded
     @POST("user_new_user.php")
-    Call<ResponseBody> créateAccount(
+    Call<ServerResponse> créateAccount(
             @Field("nom")String nom,
             @Field("prenom")String prenom,
             @Field("telephone")String telephone,
             @Field("courriel")String courriel,
-            @Field("motDePasse")String motDePasse,
-            @Field("noPermis")String noPermis,
-            @Field("carte_credit")String carte_credits);
+            @Field("motdepasse")String motdepasse,
+            @Field("nopermis")String nopermis,
+            @Field("carte_credit")String carte_credit);
     @GET("user_changer_profil.php")
     Call<Client> changeProfil();
     @GET("user_changer_motdepasse.php")

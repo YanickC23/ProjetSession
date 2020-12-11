@@ -1,21 +1,40 @@
 package com.example.projetsession.Clients;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.projetsession.Location.Adapter_Toute_Voiture;
+import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.Objets.Client;
+import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
+import com.example.projetsession.retrofit.InterfaceServeur;
+import com.example.projetsession.retrofit.RetrofitInstance;
+import com.example.projetsession.retrofit.ServerResponse;
+
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class CreationCompte extends Fragment {
@@ -28,6 +47,7 @@ public class CreationCompte extends Fragment {
     String nom, prenom, noTel, email,
             motDePasse, noPermis, carteCredit;
 
+    Client client;
     Button btnEnr;
 
     public CreationCompte() {
@@ -41,10 +61,7 @@ public class CreationCompte extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
+        client = new Client();
     }
 
     @Override
@@ -80,7 +97,9 @@ public class CreationCompte extends Fragment {
                     noPermis = edxNoPermis.getText().toString();
                     carteCredit = edxCarteCredit.getText().toString();
 
-                    interfaceCreationCompte.CreerCompteClient(CreationCompte(nom, prenom, noTel, email, motDePasse, noPermis, carteCredit));
+                    //interfaceCreationCompte.CreerCompteClient(CreationCompte(nom, prenom, noTel, email, motDePasse, noPermis, carteCredit));
+
+                    connection_serveur(nom,prenom,noTel,email,motDePasse,noPermis,carteCredit);
 
                     edxNom.setText("");
                     edxPrenom.setText("");
@@ -102,20 +121,57 @@ public class CreationCompte extends Fragment {
         interfaceCreationCompte = (InterfaceCreationCompte) context;
     }
 
-    public Client CreationCompte(String nom, String prenom, String noTel, String email,
+   /* public Client CreationCompte(String nom, String prenom, String noTel, String email,
                                  String motDePasse, String noPermis, String carte_Credit){
 
         Client client = new Client();
 
         client.setPrenom(prenom);
         client.setNom(nom);
-        client.setNoTel(noTel);
-        client.setEmail(email);
-        client.setMotDePasse(motDePasse);
-        client.setNoPermis(noPermis);
+        client.setTelephone(noTel);
+        client.setCourriel(email);
+        client.setMotdepasse(motDePasse);
+        client.setNopermis(noPermis);
         client.setCarte_credit(carte_Credit);
 
         return client;
+
+    }*/
+   public void connection_serveur(String nom, String prenom, String noTel, String email,
+                                   String motDePasse, String noPermis, String carte_Credit){
+
+        InterfaceServeur interfaceServeur = RetrofitInstance.getInstance().create(InterfaceServeur.class);
+        Call<ServerResponse> call = interfaceServeur.créateAccount(nom,prenom,noTel,email,motDePasse,noPermis,carte_Credit);
+
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse>response) {
+
+                if (response.body() != null) {
+                    String test = response.body().getResponse();
+                    if(response.isSuccessful()){
+                        Toast.makeText(getContext(), test,Toast.LENGTH_LONG).show();
+                          if(test.equals("réussit...")) {
+                              Toast.makeText(getContext(), "sa marche? oui", Toast.LENGTH_LONG).show();
+                            /*Intent intent = new Intent(getContext(), GestionLocation.class);
+                            intent.putExtra("FragmentDemande", "AccueilClient");
+                            startActivity(intent);*/
+                          }
+                        }else{
+                            Toast.makeText(getContext(),"non",Toast.LENGTH_LONG).show();
+                        }
+
+
+                }else{
+                    Toast.makeText(getContext(),"",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Une erreur est survenue lors de l'inscription.", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

@@ -140,10 +140,10 @@ public class Singleton {
 
         listeClients.get(index).setNom(_Nom);
         listeClients.get(index).setPrenom(_Prenom);
-        listeClients.get(index).setNoTel(_NoTel);
-        listeClients.get(index).setEmail(_Email);
-        listeClients.get(index).setMotDePasse(_MotDePasse);
-        listeClients.get(index).setNoPermis(_NoPermis);
+        listeClients.get(index).setTelephone(_NoTel);
+        listeClients.get(index).setCourriel(_Email);
+        listeClients.get(index).setMotdepasse(_MotDePasse);
+        listeClients.get(index).setNopermis(_NoPermis);
         listeClients.get(index).setCarte_credit(_Carte_Credit);
 
 
@@ -192,16 +192,16 @@ public class Singleton {
         return listeClients.get(index).getPrenom();
     }
     public  String Obt_NoTelClient(int index){
-        return listeClients.get(index).getNoTel();
+        return listeClients.get(index).getTelephone();
     }
     public  String Obt_CourrielClient(int index){
-        return listeClients.get(index).getEmail();
+        return listeClients.get(index).getCourriel();
     }
     public  String Obt_MotDePasseClient(int index){
-        return listeClients.get(index).getMotDePasse();
+        return listeClients.get(index).getMotdepasse();
     }
     public  String Obt_NoPermis(int index){
-        return listeClients.get(index).getNoPermis();
+        return listeClients.get(index).getNopermis();
     }
     public  String Obt_CarteCredit(int index){
         return listeClients.get(index).getCarte_credit();

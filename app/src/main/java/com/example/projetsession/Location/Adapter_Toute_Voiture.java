@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -29,6 +31,8 @@ import com.squareup.picasso.Picasso;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 public class Adapter_Toute_Voiture
         extends RecyclerView.Adapter<Adapter_Toute_Voiture.Holder>{
@@ -78,6 +82,7 @@ public class Adapter_Toute_Voiture
            holder.tvtafifs.setText(Double.toString(voiture.getTarif()) + "$");
            Picasso.get()
                    .load(RetrofitInstance.BASE_URL_IMAGE + "images/" + voiture.getPath()).fit().into(holder.photo);
+
 
     }
 
@@ -145,6 +150,19 @@ public class Adapter_Toute_Voiture
                   /*  fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.flFrag_GestVoiture, fragListeVoitures);
                     fragmentTransaction.commit();*/
+                    Intent intent = new Intent(itemView.getContext(),LouerVoiture.class);
+                    intent.putExtra("index",index + ""); // j'ai du faire cela pour que l'integer ne soit pas null
+                    intent.putExtra("marque",marque);
+                    intent.putExtra("modele",modele);
+                    intent.putExtra("annee", annee+"");
+                    intent.putExtra("valeur",valeur+"");
+                    intent.putExtra("Statut",Statut);
+                    intent.putExtra("description",description);
+                    intent.putExtra("tarif",tarif+"");
+                    intent.putExtra("categorie",categorie);
+                    intent.putExtra("proprio",proprio + "");
+                    intent.putExtra("path",path);
+                    ((GestionLocation) itemView.getContext()).startActivityForResult(intent,9952);
 
 
 

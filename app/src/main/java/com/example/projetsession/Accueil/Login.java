@@ -3,7 +3,6 @@ package com.example.projetsession.Accueil;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,15 +17,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projetsession.Clients.GestionClients;
-import com.example.projetsession.Location.GestionLocation;
 import com.example.projetsession.Objets.Client;
-import com.example.projetsession.Objets.Voiture;
 import com.example.projetsession.R;
 import com.example.projetsession.retrofit.InterfaceServeur;
 import com.example.projetsession.retrofit.RetrofitInstance;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -91,7 +85,7 @@ public class Login extends Fragment {
                 connect = interfaceLogin.ValiderConnexion(identifiant, motDePasse);
                 connection_serveur(identifiant,motDePasse);
 
-                if(connect.equals("Valide")== true){
+              /*  if(connect.equals("Valide")== true){
                     Intent intent = new Intent(view.getContext(), GestionClients.class);
                     intent.putExtra("FragmentDemande", "AccueilClient");
                     startActivity(intent);
@@ -100,20 +94,20 @@ public class Login extends Fragment {
                     editor.putInt("id", client.getId_client());
                     editor.putString("nom", client.getNom());
                     editor.putString("prenom", client.getPrenom());
-                    editor.putString("email", client.getEmail());
-                    editor.putString("motdepasse", client.getMotDePasse());
-                    editor.putString("nopermis", client.getNoPermis());
+                    editor.putString("email", client.getCourriel());
+                    editor.putString("motdepasse", client.getMotdepasse());
+                    editor.putString("nopermis", client.getNopermis());
                     editor.putString("carte_credit", client.getCarte_credit());
-                    editor.commit();
+                    editor.commit();*/
 
                     /*
                     SharedPreferences user_info = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
 String name = user_info.getString("name", "No name defined");//"No name defined" is the default value.
 int idName = user_info.getInt("idName", 0); //0 is the default value.
                      */
-                }else {
+              /*  }else {
                     Toast.makeText(view.getContext(), "Le Mot de Passe n'est pas Valide.\n Accès Refusé. ", Toast.LENGTH_LONG).show();
-                }
+                }*/
 
                 edxIdentifiant.setText("");
                 edxMotDePasse.setText("");
@@ -136,20 +130,44 @@ int idName = user_info.getInt("idName", 0); //0 is the default value.
 
         call.enqueue(new Callback<Client>() {
             @Override
-            public void onResponse(Call<Client> call, Response<Client> response) {
+            public void onResponse(Call<Client> call, Response<Client>response) {
 
-                if (response.isSuccessful()) {
+                if (response.body() != null) {
                     client = response.body();
-                        Toast.makeText(getContext(),"" + client.toString(),Toast.LENGTH_LONG).show();
+                    if(response.isSuccessful()){
+                        if(client.getId_client() != 0) {
+                            Toast.makeText(getContext(), "sa marche?" + client.toString(), Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getContext(), GestionClients.class);
+                            intent.putExtra("FragmentDemande", "AccueilClient");
+                            startActivity(intent);
+                            SharedPreferences user_info = getContext().getSharedPreferences("user_info", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = user_info.edit();
+                            editor.putInt("id", client.getId_client());
+                            editor.putString("nom", client.getNom());
+                            editor.putString("prenom", client.getPrenom());
+                            editor.putString("email", client.getCourriel());
+                            editor.putString("motdepasse", client.getMotdepasse());
+                            editor.putString("nopermis", client.getNopermis());
+                            editor.putString("carte_credit", client.getCarte_credit());
+                            editor.commit();
+                        }else{
+                            Toast.makeText(getContext(),"Compte invalide \n Accès Refusé.",Toast.LENGTH_LONG).show();
+                        }
+                    /*
+                    SharedPreferences user_info = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+String name = user_info.getString("name", "No name defined");//"No name defined" is the default value.
+int idName = user_info.getInt("idName", 0); //0 is the default value.
+                     */
+                    }
 
                     }else{
-                    Toast.makeText(getContext(),"Compte invalide",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Compte invalide \n Accès Refusé.",Toast.LENGTH_LONG).show();
                 }
                 }
 
             @Override
             public void onFailure(Call<Client> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Une erreur est survenue lors de la connection.", Toast.LENGTH_LONG).show();
             }
         });
 

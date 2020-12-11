@@ -36,7 +36,7 @@ public interface ClientDAO {
     public List<Client> get_ListeClients();
 
 
-    @Query("SELECT * FROM Table_Client WHERE email LIKE :email")
+    @Query("SELECT * FROM Table_Client WHERE courriel LIKE :email")
     public Client[] get_MDP_Client(String email);
 
 

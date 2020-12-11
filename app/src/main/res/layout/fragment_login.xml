@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/couleurTexteBouton"
+    android:background="#FFFFFF"
     tools:context=".Accueil.Login"
     tools:layout_editor_absoluteY="81dp">
 
@@ -28,7 +28,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginBottom="40dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/Login_MotdePasse"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btnLogin_Connexion"

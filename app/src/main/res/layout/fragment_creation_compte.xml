@@ -144,7 +144,7 @@
                 android:layout_weight="5"
                 android:ems="10"
                 android:hint="@string/hintmdp_1_Client"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout
@@ -168,7 +168,7 @@
                 android:layout_weight="5"
                 android:ems="10"
                 android:hint="@string/hintmdp_2_Client"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout

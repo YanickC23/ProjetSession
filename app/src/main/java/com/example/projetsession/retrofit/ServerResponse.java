@@ -1,27 +1,22 @@
 package com.example.projetsession.retrofit;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
+public class ServerResponse implements Serializable
+    {
 
-public class ServerResponse {
-   @SerializedName("kode")
-   String kode;
-    @SerializedName("pesan")
-    String pesan;
+        @SerializedName("response")
+        @Expose
+        private String response;
+        private final static long serialVersionUID = 5577819968974496117L;
 
-    public String getKode() {
-        return kode;
+        public String getResponse() {
+        return response;
     }
 
-    public void setKode(String kode) {
-        this.kode = kode;
-    }
-
-    public String getPesan() {
-        return pesan;
-    }
-
-    public void setPesan(String pesan) {
-        this.pesan = pesan;
+        public void setResponse(String response) {
+        this.response = response;
     }
 }

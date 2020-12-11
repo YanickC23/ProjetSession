@@ -73,13 +73,13 @@ public class ModificationCompte extends Fragment {
         SharedPreferences pref = this.getActivity().getSharedPreferences("PositLstClients", Context.MODE_PRIVATE);
         positLstClient = pref.getInt("PositLstClients", 0);
 
-        edxNom.setText(Singleton.getInstance().Obt_NomClient(positLstClient));
+ /*        edxNom.setText(Singleton.getInstance().Obt_NomClient(positLstClient));
         edxPrenom.setText(Singleton.getInstance().Obt_PrenomClient(positLstClient));
         edxNoTel.setText(Singleton.getInstance().Obt_NoTelClient(positLstClient));
         edxEmail.setText(Singleton.getInstance().Obt_CourrielClient(positLstClient));
         edxMotDePasse.setText(Singleton.getInstance().Obt_MotDePasseClient(positLstClient));
         edxNoPermis.setText(Singleton.getInstance().Obt_NoPermis(positLstClient));
-        edxCarteCredit.setText(Singleton.getInstance().Obt_CarteCredit(positLstClient));
+        edxCarteCredit.setText(Singleton.getInstance().Obt_CarteCredit(positLstClient));*/
 
         btnEnr.setOnClickListener(new View.OnClickListener() {
             @Override
