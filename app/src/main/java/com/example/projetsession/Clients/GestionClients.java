@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,6 +57,27 @@ public class GestionClients extends AppCompatActivity  implements CreationCompte
         fragModifCompte = new ModificationCompte();
         fragRechercheVoiture = new RechercheVoiture();
 
+        SharedPreferences user_info = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+        int id_client = user_info.getInt("id", 0); //0 is the default value.
+        String user_nom = user_info.getString("nom", "No name defined");//"No name defined" is the default value.
+        String user_prenom = user_info.getString("prenom", "No name defined");//"No name defined" is the default value.
+        String user_telephone = user_info.getString("telephone", "No name defined");//"No name defined" is the default value.
+        String user_email = user_info.getString("email", "No name defined");//"No name defined" is the default value.
+        String user_motdepasse = user_info.getString("motdepasse", "No name defined");//"No name defined" is the default value.
+        String user_nopermis = user_info.getString("nopermis", "No name defined");//"No name defined" is the default value.
+        String user_carte_credit = user_info.getString("carte_credit", "No name defined");//"No name defined" is the default value.
+
+
+       Toast.makeText(getApplicationContext(),id_client + " " + user_nom + " " + user_prenom + " "
+                + user_telephone + " " + user_email + " " + user_motdepasse + " " + user_nopermis + " "
+                + user_carte_credit,Toast.LENGTH_LONG).show();
+
+        bottomNavClient.getMenu().getItem(2).setChecked(true);
+        bottomNavClient.setSelectedItemId(R.id.mnProfil);
+
+       /* if(){
+
+        }*/
 
         Intent intent = getIntent();
         String extraFragment;

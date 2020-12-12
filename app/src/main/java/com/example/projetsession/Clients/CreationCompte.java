@@ -148,22 +148,23 @@ public class CreationCompte extends Fragment {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse>response) {
 
                 if (response.body() != null) {
-                    String test = response.body().getResponse();
+                    String message = response.body().getResponse();
                     if(response.isSuccessful()){
-                        Toast.makeText(getContext(), test,Toast.LENGTH_LONG).show();
-                          if(test.equals("réussit...")) {
-                              Toast.makeText(getContext(), "sa marche? oui", Toast.LENGTH_LONG).show();
-                            /*Intent intent = new Intent(getContext(), GestionLocation.class);
+                          if(message.equals("réussit...")) {
+                            Toast.makeText(getContext(), "L'inscription a été " + message,Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getContext(), GestionLocation.class);
                             intent.putExtra("FragmentDemande", "AccueilClient");
-                            startActivity(intent);*/
+                            startActivity(intent);
+                          }else{
+                              Toast.makeText(getContext(),"L'inscription a rencontré une erreur et a " +  message,Toast.LENGTH_LONG).show();
                           }
                         }else{
-                            Toast.makeText(getContext(),"non",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),"Une erreur est survenue lors de l'inscription.",Toast.LENGTH_LONG).show();
                         }
 
 
                 }else{
-                    Toast.makeText(getContext(),"",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Une erreur est survenue lors de l'inscription.",Toast.LENGTH_LONG).show();
                 }
             }
 

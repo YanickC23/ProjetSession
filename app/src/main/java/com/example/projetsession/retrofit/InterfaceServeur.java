@@ -27,7 +27,7 @@ public interface InterfaceServeur {
     );
 
 
-     //méthode non requise
+    //méthode non requise
     /*@GET("load_image.php")
     Call<List<Image>> getAllImage();*/
 
@@ -38,20 +38,24 @@ public interface InterfaceServeur {
     @Multipart
     @POST("images")
     Call<ResponseBody> uploadImage(@Part("description") RequestBody description, @Part MultipartBody.Part image);
+
     @POST("upload.php")
     @FormUrlEncoded
-    Call<Image> uploadimage(@Field("title")String title,@Field("image")String image);
-
+    Call<Image> uploadimage(@Field("title") String title, @Field("image") String image);
 
 
     @GET("voiture_load.php")
     Call<List<Voiture>> getAllVoiture();
+
     @GET("voiture_load_user.php")
     Call<List<Voiture>> getUserVoiture();
+
     @GET("voiture_changer.php")
     Call<List<Voiture>> changer_voiture();
+
     @GET("voiture_supprimer.php")
     Call<List<Voiture>> retirer_voiture();
+
     @GET("voiture_ajout.php")
     Call<List<Voiture>> nouvelle_voiture();
 
@@ -62,23 +66,36 @@ public interface InterfaceServeur {
     @FormUrlEncoded
     @POST("user_conn.php")
     Call<Client> getConnectionInfo(
-            @Field("courriel")String courriel,
-            @Field("motdepasse")String motdepasse);
+            @Field("courriel") String courriel,
+            @Field("motdepasse") String motdepasse);
 
     @FormUrlEncoded
     @POST("user_new_user.php")
     Call<ServerResponse> créateAccount(
-            @Field("nom")String nom,
-            @Field("prenom")String prenom,
-            @Field("telephone")String telephone,
-            @Field("courriel")String courriel,
-            @Field("motdepasse")String motdepasse,
-            @Field("nopermis")String nopermis,
-            @Field("carte_credit")String carte_credit);
-    @GET("user_changer_profil.php")
-    Call<Client> changeProfil();
+            @Field("nom") String nom,
+            @Field("prenom") String prenom,
+            @Field("telephone") String telephone,
+            @Field("courriel") String courriel,
+            @Field("motdepasse") String motdepasse,
+            @Field("nopermis") String nopermis,
+            @Field("carte_credit") String carte_credit);
+
+    @FormUrlEncoded
+    @POST("user_changer_profil.php")
+    Call<ServerResponse> changeProfil(
+            @Field("id_client")int id_client,
+            @Field("nom") String nom,
+            @Field("prenom") String prenom,
+            @Field("telephone") String telephone,
+            @Field("courriel") String courriel,
+            @Field("motdepasse") String motdepasse,
+            @Field("nopermis") String nopermis,
+            @Field("carte_credit") String carte_credit);
+
+
+    /*not required
     @GET("user_changer_motdepasse.php")
-    Call<Client> changePassword();
+    Call<Client> changePassword();*/
 
 
 
@@ -96,22 +113,6 @@ public interface InterfaceServeur {
 
     @GET("/client.php")
     Call<Client> getClientFromServer();*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @GET("/client.php")

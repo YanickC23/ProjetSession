@@ -136,7 +136,8 @@ int idName = user_info.getInt("idName", 0); //0 is the default value.
                     client = response.body();
                     if(response.isSuccessful()){
                         if(client.getId_client() != 0) {
-                            Toast.makeText(getContext(), "sa marche?" + client.toString(), Toast.LENGTH_LONG).show();
+                          //  Toast.makeText(getContext(), "sa marche?" + client.toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Bonjour " + client.getPrenom() + " " + client.getNom() + "!", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getContext(), GestionClients.class);
                             intent.putExtra("FragmentDemande", "AccueilClient");
                             startActivity(intent);
@@ -145,6 +146,7 @@ int idName = user_info.getInt("idName", 0); //0 is the default value.
                             editor.putInt("id", client.getId_client());
                             editor.putString("nom", client.getNom());
                             editor.putString("prenom", client.getPrenom());
+                            editor.putString("telephone", client.getTelephone());
                             editor.putString("email", client.getCourriel());
                             editor.putString("motdepasse", client.getMotdepasse());
                             editor.putString("nopermis", client.getNopermis());

@@ -60,12 +60,10 @@ public class Client implements Serializable {
     }
 
 
-    public Client(String success,String mess,int _Id_client, String _Nom, String _Prenom, String _NoTel,
+    public Client(int _Id_client, String _Nom, String _Prenom, String _NoTel,
                     String _Email, String _MotDePasse, String _NoPermis,
                         String _Carte_credit){
 
-       this.success = success;
-       this.message = mess;
        this.id_client = _Id_client;
        this.nom = _Nom;
        this.prenom = _Prenom;
